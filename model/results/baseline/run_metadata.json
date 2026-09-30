@@ -1,0 +1,19 @@
+{
+  "timestamp_utc": "2026-09-30T23:40:41+00:00",
+  "model_version": "0.1.0",
+  "git_commit": "unknown",
+  "python": "3.11.15",
+  "parameter_file": "config/baseline.toml",
+  "parameter_file_sha256": "358554a397db1677ec3877205b7be2ef327223d76b9b49c83590382434627d45",
+  "document": "TUG-MDN-001 Issue 2",
+  "overridden_parameters": [],
+  "calculation_status_counts": {
+    "NEW": 9,
+    "MATCH": 22
+  },
+  "sweeps": [
+    "thrust_sweep",
+    "cargo_sensitivity",
+    "dv_sensitivity"
+  ]
+}

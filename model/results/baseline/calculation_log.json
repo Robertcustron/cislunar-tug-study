@@ -1,0 +1,1126 @@
+[
+  {
+    "calc_id": "CALC-01",
+    "title": "Exhaust velocity",
+    "value": 20593.965,
+    "unit": "m/s",
+    "formula": "v_e = Isp * g0",
+    "inputs": [
+      {
+        "name": "isp",
+        "value": 2100.0,
+        "unit": "s",
+        "ref": "A-17"
+      },
+      {
+        "name": "g0",
+        "value": 9.80665,
+        "unit": "m/s^2",
+        "ref": "constant"
+      }
+    ],
+    "mdn_ref": "",
+    "mdn_value": null,
+    "rel_tolerance": 0.03,
+    "note": "",
+    "status": "NEW"
+  },
+  {
+    "calc_id": "CALC-02",
+    "title": "Design delta-v per leg",
+    "value": 2.64,
+    "unit": "km/s",
+    "formula": "dv = dv_base * (1 + margin)",
+    "inputs": [
+      {
+        "name": "dv_per_leg_base",
+        "value": 2400.0,
+        "unit": "m/s",
+        "ref": "A-06"
+      },
+      {
+        "name": "dv_margin",
+        "value": 0.1,
+        "unit": "-",
+        "ref": "A-06"
+      }
+    ],
+    "mdn_ref": "A-06, \u00a75.2, \u00a76.2",
+    "mdn_value": 2.64,
+    "rel_tolerance": 0.001,
+    "note": "",
+    "status": "MATCH"
+  },
+  {
+    "calc_id": "CALC-03",
+    "title": "EP input power at reference thrust",
+    "value": 18.019719375,
+    "unit": "kW",
+    "formula": "P = T * v_e / (2 * eta)",
+    "inputs": [
+      {
+        "name": "thrust",
+        "value": 1.05,
+        "unit": "N",
+        "ref": "A-17"
+      },
+      {
+        "name": "Exhaust velocity",
+        "value": 20593.965,
+        "unit": "m/s",
+        "ref": "CALC-01"
+      },
+      {
+        "name": "thruster_efficiency",
+        "value": 0.6,
+        "unit": "-",
+        "ref": "\u00a76.3"
+      }
+    ],
+    "mdn_ref": "\u00a71.2, \u00a75.2, A-17 (~18 kW)",
+    "mdn_value": 18.0,
+    "rel_tolerance": 0.03,
+    "note": "",
+    "status": "MATCH"
+  },
+  {
+    "calc_id": "CALC-04",
+    "title": "Propellant mass flow",
+    "value": 50.98581064889641,
+    "unit": "mg/s",
+    "formula": "mdot = T / v_e",
+    "inputs": [
+      {
+        "name": "thrust",
+        "value": 1.05,
+        "unit": "N",
+        "ref": "A-17"
+      },
+      {
+        "name": "Exhaust velocity",
+        "value": 20593.965,
+        "unit": "m/s",
+        "ref": "CALC-01"
+      }
+    ],
+    "mdn_ref": "",
+    "mdn_value": null,
+    "rel_tolerance": 0.03,
+    "note": "",
+    "status": "NEW"
+  },
+  {
+    "calc_id": "CALC-05",
+    "title": "Return-leg propellant",
+    "value": 0.8753424616171053,
+    "unit": "t",
+    "formula": "m_p,ret = (m_dry + m_cargo,ret) * (exp(dv / v_e) - 1)",
+    "inputs": [
+      {
+        "name": "cargo_outbound",
+        "value": 5000.0,
+        "unit": "kg",
+        "ref": "A-01"
+      },
+      {
+        "name": "cargo_return",
+        "value": 500.0,
+        "unit": "kg",
+        "ref": "A-02"
+      },
+      {
+        "name": "dry_mass",
+        "value": 5900.0,
+        "unit": "kg",
+        "ref": "A-10"
+      },
+      {
+        "name": "isp",
+        "value": 2100.0,
+        "unit": "s",
+        "ref": "A-17"
+      },
+      {
+        "name": "thrust",
+        "value": 1.05,
+        "unit": "N",
+        "ref": "A-17"
+      },
+      {
+        "name": "duty_cycle",
+        "value": 0.85,
+        "unit": "-",
+        "ref": "A-17"
+      },
+      {
+        "name": "Design delta-v per leg",
+        "value": 2.64,
+        "unit": "km/s",
+        "ref": "CALC-02"
+      }
+    ],
+    "mdn_ref": "",
+    "mdn_value": null,
+    "rel_tolerance": 0.03,
+    "note": "",
+    "status": "NEW"
+  },
+  {
+    "calc_id": "CALC-06",
+    "title": "Outbound-leg propellant",
+    "value": 1.6105401963650532,
+    "unit": "t",
+    "formula": "m_p,out = (m_dry + m_cargo,out + m_p,ret) * (exp(dv / v_e) - 1)",
+    "inputs": [
+      {
+        "name": "cargo_outbound",
+        "value": 5000.0,
+        "unit": "kg",
+        "ref": "A-01"
+      },
+      {
+        "name": "cargo_return",
+        "value": 500.0,
+        "unit": "kg",
+        "ref": "A-02"
+      },
+      {
+        "name": "dry_mass",
+        "value": 5900.0,
+        "unit": "kg",
+        "ref": "A-10"
+      },
+      {
+        "name": "isp",
+        "value": 2100.0,
+        "unit": "s",
+        "ref": "A-17"
+      },
+      {
+        "name": "thrust",
+        "value": 1.05,
+        "unit": "N",
+        "ref": "A-17"
+      },
+      {
+        "name": "duty_cycle",
+        "value": 0.85,
+        "unit": "-",
+        "ref": "A-17"
+      },
+      {
+        "name": "Design delta-v per leg",
+        "value": 2.64,
+        "unit": "km/s",
+        "ref": "CALC-02"
+      },
+      {
+        "name": "Return-leg propellant",
+        "value": 0.8753424616171053,
+        "unit": "t",
+        "ref": "CALC-05"
+      }
+    ],
+    "mdn_ref": "",
+    "mdn_value": null,
+    "rel_tolerance": 0.03,
+    "note": "The tug carries its return propellant on the outbound leg (refuelled only in Earth orbit).",
+    "status": "NEW"
+  },
+  {
+    "calc_id": "CALC-07",
+    "title": "Propellant per round trip",
+    "value": 2.4858826579821582,
+    "unit": "t",
+    "formula": "m_p = m_p,out + m_p,ret",
+    "inputs": [
+      {
+        "name": "Outbound-leg propellant",
+        "value": 1.6105401963650532,
+        "unit": "t",
+        "ref": "CALC-06"
+      },
+      {
+        "name": "Return-leg propellant",
+        "value": 0.8753424616171053,
+        "unit": "t",
+        "ref": "CALC-05"
+      }
+    ],
+    "mdn_ref": "A-10, \u00a75.2, SYS-REQ-004 (~2.5 t)",
+    "mdn_value": 2.5,
+    "rel_tolerance": 0.03,
+    "note": "",
+    "status": "MATCH"
+  },
+  {
+    "calc_id": "CALC-08",
+    "title": "Tug mass at departure from staging orbit",
+    "value": 13.385882657982158,
+    "unit": "t",
+    "formula": "m_0 = m_dry + m_cargo,out + m_p",
+    "inputs": [
+      {
+        "name": "cargo_outbound",
+        "value": 5000.0,
+        "unit": "kg",
+        "ref": "A-01"
+      },
+      {
+        "name": "cargo_return",
+        "value": 500.0,
+        "unit": "kg",
+        "ref": "A-02"
+      },
+      {
+        "name": "dry_mass",
+        "value": 5900.0,
+        "unit": "kg",
+        "ref": "A-10"
+      },
+      {
+        "name": "isp",
+        "value": 2100.0,
+        "unit": "s",
+        "ref": "A-17"
+      },
+      {
+        "name": "thrust",
+        "value": 1.05,
+        "unit": "N",
+        "ref": "A-17"
+      },
+      {
+        "name": "duty_cycle",
+        "value": 0.85,
+        "unit": "-",
+        "ref": "A-17"
+      },
+      {
+        "name": "Propellant per round trip",
+        "value": 2.4858826579821582,
+        "unit": "t",
+        "ref": "CALC-07"
+      }
+    ],
+    "mdn_ref": "",
+    "mdn_value": null,
+    "rel_tolerance": 0.03,
+    "note": "",
+    "status": "NEW"
+  },
+  {
+    "calc_id": "CALC-09",
+    "title": "Outbound transfer time",
+    "value": 430.1199350948624,
+    "unit": "days",
+    "formula": "t_out = m_p,out / mdot / duty_cycle",
+    "inputs": [
+      {
+        "name": "cargo_outbound",
+        "value": 5000.0,
+        "unit": "kg",
+        "ref": "A-01"
+      },
+      {
+        "name": "cargo_return",
+        "value": 500.0,
+        "unit": "kg",
+        "ref": "A-02"
+      },
+      {
+        "name": "dry_mass",
+        "value": 5900.0,
+        "unit": "kg",
+        "ref": "A-10"
+      },
+      {
+        "name": "isp",
+        "value": 2100.0,
+        "unit": "s",
+        "ref": "A-17"
+      },
+      {
+        "name": "thrust",
+        "value": 1.05,
+        "unit": "N",
+        "ref": "A-17"
+      },
+      {
+        "name": "duty_cycle",
+        "value": 0.85,
+        "unit": "-",
+        "ref": "A-17"
+      },
+      {
+        "name": "Outbound-leg propellant",
+        "value": 1.6105401963650532,
+        "unit": "t",
+        "ref": "CALC-06"
+      }
+    ],
+    "mdn_ref": "\u00a75.2, \u00a76.2, \u00a76.3 (~430 d)",
+    "mdn_value": 430.0,
+    "rel_tolerance": 0.005,
+    "note": "",
+    "status": "MATCH"
+  },
+  {
+    "calc_id": "CALC-10",
+    "title": "Return transfer time",
+    "value": 233.77388756038633,
+    "unit": "days",
+    "formula": "t_ret = m_p,ret / mdot / duty_cycle",
+    "inputs": [
+      {
+        "name": "cargo_outbound",
+        "value": 5000.0,
+        "unit": "kg",
+        "ref": "A-01"
+      },
+      {
+        "name": "cargo_return",
+        "value": 500.0,
+        "unit": "kg",
+        "ref": "A-02"
+      },
+      {
+        "name": "dry_mass",
+        "value": 5900.0,
+        "unit": "kg",
+        "ref": "A-10"
+      },
+      {
+        "name": "isp",
+        "value": 2100.0,
+        "unit": "s",
+        "ref": "A-17"
+      },
+      {
+        "name": "thrust",
+        "value": 1.05,
+        "unit": "N",
+        "ref": "A-17"
+      },
+      {
+        "name": "duty_cycle",
+        "value": 0.85,
+        "unit": "-",
+        "ref": "A-17"
+      },
+      {
+        "name": "Return-leg propellant",
+        "value": 0.8753424616171053,
+        "unit": "t",
+        "ref": "CALC-05"
+      }
+    ],
+    "mdn_ref": "\u00a75.2, \u00a76.2, \u00a76.3 (~234 d)",
+    "mdn_value": 234.0,
+    "rel_tolerance": 0.005,
+    "note": "",
+    "status": "MATCH"
+  },
+  {
+    "calc_id": "CALC-11",
+    "title": "Round-trip duration",
+    "value": 1.9819132721567385,
+    "unit": "years",
+    "formula": "t_rt = (t_out + t_ret + t_ends) / 365.25",
+    "inputs": [
+      {
+        "name": "Outbound transfer time",
+        "value": 430.1199350948624,
+        "unit": "days",
+        "ref": "CALC-09"
+      },
+      {
+        "name": "Return transfer time",
+        "value": 233.77388756038633,
+        "unit": "days",
+        "ref": "CALC-10"
+      },
+      {
+        "name": "end_time_per_round_trip",
+        "value": 60.0,
+        "unit": "days",
+        "ref": "A-18"
+      }
+    ],
+    "mdn_ref": "\u00a71.2, \u00a75.2, \u00a76.3 (~2.0 yr)",
+    "mdn_value": 2.0,
+    "rel_tolerance": 0.03,
+    "note": "",
+    "status": "MATCH"
+  },
+  {
+    "calc_id": "CALC-12",
+    "title": "Round trips in design life",
+    "value": 7.0,
+    "unit": "trips",
+    "formula": "N = floor(L / t_rt)",
+    "inputs": [
+      {
+        "name": "Round-trip duration",
+        "value": 1.9819132721567385,
+        "unit": "years",
+        "ref": "CALC-11"
+      },
+      {
+        "name": "design_life",
+        "value": 15.0,
+        "unit": "years",
+        "ref": "A-03"
+      }
+    ],
+    "mdn_ref": "\u00a71.2, A-03, \u00a76.3 (7)",
+    "mdn_value": 7.0,
+    "rel_tolerance": 0.0,
+    "note": "Commissioning time after launch is not deducted; last return leg must fit.",
+    "status": "MATCH"
+  },
+  {
+    "calc_id": "CALC-13",
+    "title": "Launch mass needed per round trip",
+    "value": 7.485882657982158,
+    "unit": "t",
+    "formula": "m_launch = m_cargo,out + m_p",
+    "inputs": [
+      {
+        "name": "cargo_outbound",
+        "value": 5000.0,
+        "unit": "kg",
+        "ref": "A-01"
+      },
+      {
+        "name": "Propellant per round trip",
+        "value": 2.4858826579821582,
+        "unit": "t",
+        "ref": "CALC-07"
+      }
+    ],
+    "mdn_ref": "C-1, A-10 (~7.5 t)",
+    "mdn_value": 7.5,
+    "rel_tolerance": 0.03,
+    "note": "",
+    "status": "MATCH"
+  },
+  {
+    "calc_id": "CALC-14",
+    "title": "Unused Ariane 64 GTO capacity per trip",
+    "value": 4.014117342017842,
+    "unit": "t",
+    "formula": "margin = C_GTO - m_launch",
+    "inputs": [
+      {
+        "name": "launcher_gto_capacity",
+        "value": 11500.0,
+        "unit": "kg",
+        "ref": "C-1"
+      },
+      {
+        "name": "Launch mass needed per round trip",
+        "value": 7.485882657982158,
+        "unit": "t",
+        "ref": "CALC-13"
+      }
+    ],
+    "mdn_ref": "C-1 (~4.0 t)",
+    "mdn_value": 4.0,
+    "rel_tolerance": 0.03,
+    "note": "",
+    "status": "MATCH"
+  },
+  {
+    "calc_id": "CALC-15",
+    "title": "Max cargo per Ariane 64 (GTO, NRHO destination)",
+    "value": 8.531153498883116,
+    "unit": "t",
+    "formula": "solve m_cargo + m_p(m_cargo) = C_GTO",
+    "inputs": [
+      {
+        "name": "cargo_outbound",
+        "value": 5000.0,
+        "unit": "kg",
+        "ref": "A-01"
+      },
+      {
+        "name": "cargo_return",
+        "value": 500.0,
+        "unit": "kg",
+        "ref": "A-02"
+      },
+      {
+        "name": "dry_mass",
+        "value": 5900.0,
+        "unit": "kg",
+        "ref": "A-10"
+      },
+      {
+        "name": "isp",
+        "value": 2100.0,
+        "unit": "s",
+        "ref": "A-17"
+      },
+      {
+        "name": "thrust",
+        "value": 1.05,
+        "unit": "N",
+        "ref": "A-17"
+      },
+      {
+        "name": "duty_cycle",
+        "value": 0.85,
+        "unit": "-",
+        "ref": "A-17"
+      },
+      {
+        "name": "launcher_gto_capacity",
+        "value": 11500.0,
+        "unit": "kg",
+        "ref": "C-1"
+      }
+    ],
+    "mdn_ref": "A-01, A-10, D-10 (~8.5 t)",
+    "mdn_value": 8.5,
+    "rel_tolerance": 0.03,
+    "note": "",
+    "status": "MATCH"
+  },
+  {
+    "calc_id": "CALC-16",
+    "title": "Ariane 64 direct capacity to lunar transfer orbit",
+    "value": 8.6,
+    "unit": "t",
+    "formula": "input (direct-launch baseline for Step 4)",
+    "inputs": [
+      {
+        "name": "launcher_lto_capacity",
+        "value": 8600.0,
+        "unit": "kg",
+        "ref": "D-09"
+      }
+    ],
+    "mdn_ref": "D-09 (~8.6 t)",
+    "mdn_value": 8.6,
+    "rel_tolerance": 0.03,
+    "note": "Includes any lunar insertion hardware; not directly comparable with CALC-15 (cargo delivered into NRHO).",
+    "status": "MATCH"
+  },
+  {
+    "calc_id": "CALC-17",
+    "title": "Propellant per round trip, delta-v sensitivity case",
+    "value": 3.3229343075242888,
+    "unit": "t",
+    "formula": "as CALC-07 with dv = dv_sens * (1 + margin)",
+    "inputs": [
+      {
+        "name": "cargo_outbound",
+        "value": 5000.0,
+        "unit": "kg",
+        "ref": "A-01"
+      },
+      {
+        "name": "cargo_return",
+        "value": 500.0,
+        "unit": "kg",
+        "ref": "A-02"
+      },
+      {
+        "name": "dry_mass",
+        "value": 5900.0,
+        "unit": "kg",
+        "ref": "A-10"
+      },
+      {
+        "name": "isp",
+        "value": 2100.0,
+        "unit": "s",
+        "ref": "A-17"
+      },
+      {
+        "name": "thrust",
+        "value": 1.05,
+        "unit": "N",
+        "ref": "A-17"
+      },
+      {
+        "name": "duty_cycle",
+        "value": 0.85,
+        "unit": "-",
+        "ref": "A-17"
+      },
+      {
+        "name": "dv_per_leg_sensitivity_base",
+        "value": 3100.0,
+        "unit": "m/s",
+        "ref": "A-06"
+      },
+      {
+        "name": "dv_margin",
+        "value": 0.1,
+        "unit": "-",
+        "ref": "A-06"
+      }
+    ],
+    "mdn_ref": "A-10 (3.3 t)",
+    "mdn_value": 3.3,
+    "rel_tolerance": 0.03,
+    "note": "The MDN value applies the 10% margin to 3.1 km/s (3.41 km/s per leg). The MDN should say so explicitly.",
+    "status": "MATCH"
+  },
+  {
+    "calc_id": "CALC-18",
+    "title": "Round trips in life, delta-v sensitivity case",
+    "value": 5.0,
+    "unit": "trips",
+    "formula": "as CALC-12 with dv = dv_sens * (1 + margin)",
+    "inputs": [
+      {
+        "name": "dv_per_leg_sensitivity_base",
+        "value": 3100.0,
+        "unit": "m/s",
+        "ref": "A-06"
+      }
+    ],
+    "mdn_ref": "",
+    "mdn_value": null,
+    "rel_tolerance": 0.03,
+    "note": "",
+    "status": "NEW"
+  },
+  {
+    "calc_id": "CALC-19",
+    "title": "Extra delta-v per leg NRHO to LLO (estimate)",
+    "value": 1.6335041143928368,
+    "unit": "km/s",
+    "formula": "dv_extra ~ v_circ(LLO) = sqrt(mu_moon / (R_moon + h))",
+    "inputs": [
+      {
+        "name": "llo_altitude",
+        "value": 100.0,
+        "unit": "km",
+        "ref": "D-10"
+      }
+    ],
+    "mdn_ref": "\u00a76.1 item 5, D-10 (~1.6 km/s)",
+    "mdn_value": 1.6,
+    "rel_tolerance": 0.03,
+    "note": "Low-thrust spiral delta-v is approximated by the local circular speed (own estimate).",
+    "status": "MATCH"
+  },
+  {
+    "calc_id": "CALC-20",
+    "title": "Max cargo per Ariane 64 if the destination were LLO",
+    "value": 6.588942425742019,
+    "unit": "t",
+    "formula": "as CALC-15 with dv = (dv_base + dv_extra) * (1 + margin)",
+    "inputs": [
+      {
+        "name": "Max cargo per Ariane 64 (GTO, NRHO destination)",
+        "value": 8.531153498883116,
+        "unit": "t",
+        "ref": "CALC-15"
+      },
+      {
+        "name": "Extra delta-v per leg NRHO to LLO (estimate)",
+        "value": 1.6335041143928368,
+        "unit": "km/s",
+        "ref": "CALC-19"
+      },
+      {
+        "name": "dv_margin",
+        "value": 0.1,
+        "unit": "-",
+        "ref": "A-06"
+      }
+    ],
+    "mdn_ref": "\u00a76.1 item 5, D-10 (6.6 t)",
+    "mdn_value": 6.6,
+    "rel_tolerance": 0.03,
+    "note": "",
+    "status": "MATCH"
+  },
+  {
+    "calc_id": "CALC-21",
+    "title": "LLO orbital period",
+    "value": 117.79099688915153,
+    "unit": "min",
+    "formula": "T = 2 pi sqrt(r^3 / mu_moon)",
+    "inputs": [
+      {
+        "name": "llo_altitude",
+        "value": 100.0,
+        "unit": "km",
+        "ref": "D-10"
+      }
+    ],
+    "mdn_ref": "\u00a75.1 item 3 (~118 min)",
+    "mdn_value": 118.0,
+    "rel_tolerance": 0.03,
+    "note": "",
+    "status": "MATCH"
+  },
+  {
+    "calc_id": "CALC-22",
+    "title": "LLO worst-case eclipse per orbit",
+    "value": 46.4685351191223,
+    "unit": "min",
+    "formula": "t_ecl = T * asin(R_moon / r) / pi  (beta = 0, cylindrical shadow)",
+    "inputs": [
+      {
+        "name": "llo_altitude",
+        "value": 100.0,
+        "unit": "km",
+        "ref": "D-10"
+      },
+      {
+        "name": "LLO orbital period",
+        "value": 117.79099688915153,
+        "unit": "min",
+        "ref": "CALC-21"
+      }
+    ],
+    "mdn_ref": "\u00a75.1 item 3 (~46 min)",
+    "mdn_value": 46.0,
+    "rel_tolerance": 0.03,
+    "note": "",
+    "status": "MATCH"
+  },
+  {
+    "calc_id": "CALC-23",
+    "title": "LEO-to-GEO delta-v relative to GTO-to-NRHO",
+    "value": 2.5,
+    "unit": "-",
+    "formula": "ratio = dv(LEO->GEO) / dv(GTO->NRHO)",
+    "inputs": [
+      {
+        "name": "leo_to_geo_dv",
+        "value": 6000.0,
+        "unit": "m/s",
+        "ref": "D-02"
+      },
+      {
+        "name": "dv_per_leg_base",
+        "value": 2400.0,
+        "unit": "m/s",
+        "ref": "A-06"
+      }
+    ],
+    "mdn_ref": "D-02, \u00a76.1 item 4 (more than twice)",
+    "mdn_value": null,
+    "rel_tolerance": 0.03,
+    "note": "Supports D-02: > 2 means a LEO start needs more than twice the delta-v.",
+    "status": "NEW"
+  },
+  {
+    "calc_id": "CALC-24",
+    "title": "EP power for 10 round trips in 15 years",
+    "value": 24.520994879309377,
+    "unit": "kW",
+    "formula": "solve t_rt(T) = years * 365.25 / trips, then P = T * v_e / (2 * eta)",
+    "inputs": [
+      {
+        "name": "cargo_outbound",
+        "value": 5000.0,
+        "unit": "kg",
+        "ref": "A-01"
+      },
+      {
+        "name": "cargo_return",
+        "value": 500.0,
+        "unit": "kg",
+        "ref": "A-02"
+      },
+      {
+        "name": "dry_mass",
+        "value": 5900.0,
+        "unit": "kg",
+        "ref": "A-10"
+      },
+      {
+        "name": "isp",
+        "value": 2100.0,
+        "unit": "s",
+        "ref": "A-17"
+      },
+      {
+        "name": "thrust",
+        "value": 1.05,
+        "unit": "N",
+        "ref": "A-17"
+      },
+      {
+        "name": "duty_cycle",
+        "value": 0.85,
+        "unit": "-",
+        "ref": "A-17"
+      },
+      {
+        "name": "thruster_efficiency",
+        "value": 0.6,
+        "unit": "-",
+        "ref": "\u00a76.3"
+      },
+      {
+        "name": "end_time_per_round_trip",
+        "value": 60.0,
+        "unit": "days",
+        "ref": "A-18"
+      }
+    ],
+    "mdn_ref": "\u00a71.2, A-03, \u00a76.3",
+    "mdn_value": 25.0,
+    "rel_tolerance": 0.05,
+    "note": "Required thrust 1.429 N. Dry mass held constant (Step 4 adds growth with power).",
+    "status": "MATCH"
+  },
+  {
+    "calc_id": "CALC-25",
+    "title": "EP power for 8 round trips in 10 years",
+    "value": 30.1672003228522,
+    "unit": "kW",
+    "formula": "solve t_rt(T) = years * 365.25 / trips, then P = T * v_e / (2 * eta)",
+    "inputs": [
+      {
+        "name": "cargo_outbound",
+        "value": 5000.0,
+        "unit": "kg",
+        "ref": "A-01"
+      },
+      {
+        "name": "cargo_return",
+        "value": 500.0,
+        "unit": "kg",
+        "ref": "A-02"
+      },
+      {
+        "name": "dry_mass",
+        "value": 5900.0,
+        "unit": "kg",
+        "ref": "A-10"
+      },
+      {
+        "name": "isp",
+        "value": 2100.0,
+        "unit": "s",
+        "ref": "A-17"
+      },
+      {
+        "name": "thrust",
+        "value": 1.05,
+        "unit": "N",
+        "ref": "A-17"
+      },
+      {
+        "name": "duty_cycle",
+        "value": 0.85,
+        "unit": "-",
+        "ref": "A-17"
+      },
+      {
+        "name": "thruster_efficiency",
+        "value": 0.6,
+        "unit": "-",
+        "ref": "\u00a76.3"
+      },
+      {
+        "name": "end_time_per_round_trip",
+        "value": 60.0,
+        "unit": "days",
+        "ref": "A-18"
+      }
+    ],
+    "mdn_ref": "\u00a71.2, A-03, \u00a76.3",
+    "mdn_value": 30.0,
+    "rel_tolerance": 0.05,
+    "note": "Required thrust 1.758 N. Dry mass held constant (Step 4 adds growth with power).",
+    "status": "MATCH"
+  },
+  {
+    "calc_id": "CALC-26",
+    "title": "Xenon throughput of one 12 kW-class thruster over rated life",
+    "value": 1.9257241679270105,
+    "unit": "t",
+    "formula": "m_xe = (2 * eta * P / v_e) / v_e * life",
+    "inputs": [
+      {
+        "name": "thruster_unit_power",
+        "value": 12000.0,
+        "unit": "W",
+        "ref": "\u00a75.2"
+      },
+      {
+        "name": "thruster_unit_isp",
+        "value": 2600.0,
+        "unit": "s",
+        "ref": "\u00a75.2"
+      },
+      {
+        "name": "thruster_unit_efficiency",
+        "value": 0.63,
+        "unit": "-",
+        "ref": "\u00a75.2"
+      },
+      {
+        "name": "thruster_rated_life",
+        "value": 23000.0,
+        "unit": "hours",
+        "ref": "\u00a75.2"
+      }
+    ],
+    "mdn_ref": "\u00a75.2 (~2,000 kg, own estimate)",
+    "mdn_value": 2.0,
+    "rel_tolerance": 0.1,
+    "note": "",
+    "status": "MATCH"
+  },
+  {
+    "calc_id": "CALC-27",
+    "title": "Xenon processed over the design life",
+    "value": 17.40117860587511,
+    "unit": "t",
+    "formula": "m_life = m_p * N",
+    "inputs": [
+      {
+        "name": "Propellant per round trip",
+        "value": 2.4858826579821582,
+        "unit": "t",
+        "ref": "CALC-07"
+      },
+      {
+        "name": "Round trips in design life",
+        "value": 7.0,
+        "unit": "trips",
+        "ref": "CALC-12"
+      }
+    ],
+    "mdn_ref": "",
+    "mdn_value": null,
+    "rel_tolerance": 0.03,
+    "note": "Input to the Step 6 thruster-life assessment.",
+    "status": "NEW"
+  },
+  {
+    "calc_id": "CALC-28",
+    "title": "Thruster lifetimes consumed over the design life",
+    "value": 9.036173973247168,
+    "unit": "-",
+    "formula": "n = m_life / m_xe,unit",
+    "inputs": [
+      {
+        "name": "Xenon processed over the design life",
+        "value": 17.40117860587511,
+        "unit": "t",
+        "ref": "CALC-27"
+      },
+      {
+        "name": "Xenon throughput of one 12 kW-class thruster over rated life",
+        "value": 1.9257241679270105,
+        "unit": "t",
+        "ref": "CALC-26"
+      }
+    ],
+    "mdn_ref": "",
+    "mdn_value": null,
+    "rel_tolerance": 0.03,
+    "note": "How many 12 kW-class thruster lifetimes the mission uses; drives spares/replacement (Step 6).",
+    "status": "NEW"
+  },
+  {
+    "calc_id": "VAL-01",
+    "title": "Rimani et al. tug: thrusting time at 1.05 N",
+    "value": 339.61488900458676,
+    "unit": "days",
+    "formula": "t = m_0 * (1 - exp(-dv / v_e)) / mdot",
+    "inputs": [
+      {
+        "name": "rimani_initial_mass",
+        "value": 13600.0,
+        "unit": "kg",
+        "ref": "\u00a76.1"
+      },
+      {
+        "name": "rimani_dv",
+        "value": 2400.0,
+        "unit": "m/s",
+        "ref": "\u00a76.1"
+      },
+      {
+        "name": "rimani_isp",
+        "value": 2100.0,
+        "unit": "s",
+        "ref": "\u00a76.1"
+      },
+      {
+        "name": "rimani_thrust",
+        "value": 1.05,
+        "unit": "N",
+        "ref": "\u00a76.1"
+      }
+    ],
+    "mdn_ref": "\u00a76.1 item 1 (340 d own check; paper: 364 d elapsed)",
+    "mdn_value": 340.0,
+    "rel_tolerance": 0.01,
+    "note": "340 d thrusting inside a 364 d transfer (93%) supports the 1.05 N reference thrust.",
+    "status": "MATCH"
+  },
+  {
+    "calc_id": "VAL-02",
+    "title": "Gateway PPE thrusting duty cycle",
+    "value": 0.8328981723237598,
+    "unit": "-",
+    "formula": "duty = t_thrust / t_transfer",
+    "inputs": [
+      {
+        "name": "ppe_thrusting_time",
+        "value": 319.0,
+        "unit": "days",
+        "ref": "\u00a76.1"
+      },
+      {
+        "name": "ppe_transfer_time",
+        "value": 383.0,
+        "unit": "days",
+        "ref": "\u00a76.1"
+      }
+    ],
+    "mdn_ref": "A-17 (85%)",
+    "mdn_value": 0.85,
+    "rel_tolerance": 0.03,
+    "note": "",
+    "status": "MATCH"
+  },
+  {
+    "calc_id": "VAL-03",
+    "title": "SMART-1 xenon predicted by the rocket equation",
+    "value": 79.74650160202867,
+    "unit": "kg",
+    "formula": "m_p = m_0 * (1 - exp(-dv / v_e))",
+    "inputs": [
+      {
+        "name": "smart1_launch_mass",
+        "value": 367.0,
+        "unit": "kg",
+        "ref": "\u00a76.1"
+      },
+      {
+        "name": "smart1_dv",
+        "value": 3700.0,
+        "unit": "m/s",
+        "ref": "\u00a76.1"
+      },
+      {
+        "name": "smart1_isp",
+        "value": 1540.0,
+        "unit": "s",
+        "ref": "\u00a76.1"
+      }
+    ],
+    "mdn_ref": "\u00a76.1 item 3 (82 kg flown)",
+    "mdn_value": 82.0,
+    "rel_tolerance": 0.05,
+    "note": "Checks that the rocket-equation approach matches a flown European EP mission.",
+    "status": "MATCH"
+  }
+]

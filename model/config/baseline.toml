@@ -1,0 +1,225 @@
+# Baseline parameters for the cislunar electric cargo tug study.
+#
+# Every parameter carries:
+#   value   numeric value in the stated unit
+#   unit    SI-based unit string (kg, m/s, s, N, W, days, years, hours, km, -)
+#   ref     traceability ID: assumption (A-xx), constraint (C-x), decision (D-xx)
+#           or section (§x.y) of TUG-MDN-001 Issue 2
+#   source  where the value comes from ("own estimate" when it is not from a source)
+#
+# To run a variant, copy this file or use `--set name=value` on the command line.
+# Do not edit values here without adding a line to the MDN assumption register.
+
+[meta]
+study = "Cislunar Electric Cargo Tug - Phase 0/A"
+document = "TUG-MDN-001 Issue 2"
+
+# ---------------------------------------------------------------- mission
+[parameters.cargo_outbound]
+value = 5000.0
+unit = "kg"
+ref = "A-01"
+source = "Study assumption; close to the 5.4 t of Rimani et al. (2020)"
+
+[parameters.cargo_return]
+value = 500.0
+unit = "kg"
+ref = "A-02"
+source = "Study assumption; Explore2040 p.14 return need"
+
+[parameters.design_life]
+value = 15.0
+unit = "years"
+ref = "A-03"
+source = "Study assumption"
+
+[parameters.end_time_per_round_trip]
+value = 60.0
+unit = "days"
+ref = "A-18"
+source = "Study assumption: rendezvous, refuelling, capture and hand-over at both ends"
+
+# ------------------------------------------------------------ delta-v
+[parameters.dv_per_leg_base]
+value = 2400.0
+unit = "m/s"
+ref = "A-06"
+source = "Rimani et al. (2020), GTO to NRHO"
+
+[parameters.dv_margin]
+value = 0.10
+unit = "-"
+ref = "A-06"
+source = "Study assumption"
+
+[parameters.dv_per_leg_sensitivity_base]
+value = 3100.0
+unit = "m/s"
+ref = "A-06"
+source = "McGuire et al. (2024), Gateway PPE sub-GTO to NRHO; margin applied on top"
+
+[parameters.return_dv_ratio]
+value = 1.0
+unit = "-"
+ref = "A-07"
+source = "Study assumption: return leg delta-v equal to outbound"
+
+[parameters.leo_to_geo_dv]
+value = 6000.0
+unit = "m/s"
+ref = "D-02"
+source = "Loghry et al. (2017), LEO (28.5 deg) to GEO with 20-50 kW SEP"
+
+# ------------------------------------------------------ propulsion/power
+[parameters.thrust]
+value = 1.05
+unit = "N"
+ref = "A-17"
+source = "Rimani et al. (2020) operating point, reproduced by own check"
+
+[parameters.isp]
+value = 2100.0
+unit = "s"
+ref = "A-17"
+source = "Rimani et al. (2020)"
+
+[parameters.thruster_efficiency]
+value = 0.60
+unit = "-"
+ref = "§6.3"
+source = "Own estimate, typical Hall thruster anode efficiency (not yet in Appendix A: propose A-19)"
+
+[parameters.duty_cycle]
+value = 0.85
+unit = "-"
+ref = "A-17"
+source = "Gateway PPE: 319 of 383 days thrusting (McGuire et al. 2024), rounded"
+
+# --------------------------------------------------------------- masses
+[parameters.dry_mass]
+value = 5900.0
+unit = "kg"
+ref = "A-10"
+source = "Placeholder from Rimani et al. (2020); to be replaced by Step 4/6 mass model"
+
+# --------------------------------------------------------------- launcher
+[parameters.launcher_gto_capacity]
+value = 11500.0
+unit = "kg"
+ref = "C-1"
+source = "ArianeGroup, Ariane 64 to GTO"
+
+[parameters.launcher_lto_capacity]
+value = 8600.0
+unit = "kg"
+ref = "D-09"
+source = "Ariane 6 published capability to lunar transfer orbit (97.4 deg reference)"
+
+# --------------------------------------------------------------- lunar orbit
+[parameters.llo_altitude]
+value = 100.0
+unit = "km"
+ref = "D-10"
+source = "Study assumption for the excluded LLO case"
+
+# ------------------------------------------------ thruster life (Step 6 flag)
+[parameters.thruster_rated_life]
+value = 23000.0
+unit = "hours"
+ref = "§5.2"
+source = "Shastry et al. (2024), AEPS 12 kW Hall thruster life target"
+
+[parameters.thruster_unit_power]
+value = 12000.0
+unit = "W"
+ref = "§5.2"
+source = "Own estimate, AEPS-class operating point (TBC against Shastry et al.)"
+
+[parameters.thruster_unit_isp]
+value = 2600.0
+unit = "s"
+ref = "§5.2"
+source = "Own estimate, AEPS-class operating point (TBC against Shastry et al.)"
+
+[parameters.thruster_unit_efficiency]
+value = 0.63
+unit = "-"
+ref = "§5.2"
+source = "Own estimate, AEPS-class operating point (TBC against Shastry et al.)"
+
+# ------------------------------------------------ validation cases (published)
+[parameters.rimani_initial_mass]
+value = 13600.0
+unit = "kg"
+ref = "§6.1"
+source = "Rimani et al. (2020): 13.6 t tug (5.4 t cargo, 5.9 t dry)"
+
+[parameters.rimani_dv]
+value = 2400.0
+unit = "m/s"
+ref = "§6.1"
+source = "Rimani et al. (2020), GTO to NRHO (no margin)"
+
+[parameters.rimani_isp]
+value = 2100.0
+unit = "s"
+ref = "§6.1"
+source = "Rimani et al. (2020)"
+
+[parameters.rimani_thrust]
+value = 1.05
+unit = "N"
+ref = "§6.1"
+source = "Own check: total thrust that reproduces the Rimani et al. (2020) transfer"
+
+[parameters.rimani_transfer_time]
+value = 364.0
+unit = "days"
+ref = "§6.1"
+source = "Rimani et al. (2020)"
+
+[parameters.ppe_transfer_time]
+value = 383.0
+unit = "days"
+ref = "§6.1"
+source = "McGuire et al. (2024)"
+
+[parameters.ppe_thrusting_time]
+value = 319.0
+unit = "days"
+ref = "§6.1"
+source = "McGuire et al. (2024)"
+
+[parameters.smart1_launch_mass]
+value = 367.0
+unit = "kg"
+ref = "§6.1"
+source = "eoPortal SMART-1 page (TBC)"
+
+[parameters.smart1_xenon_used]
+value = 82.0
+unit = "kg"
+ref = "§6.1"
+source = "Estublier et al., ESA Bulletin 129"
+
+[parameters.smart1_dv]
+value = 3700.0
+unit = "m/s"
+ref = "§6.1"
+source = "Estublier et al., ESA Bulletin 129"
+
+[parameters.smart1_isp]
+value = 1540.0
+unit = "s"
+ref = "§6.1"
+source = "Estublier et al., ESA Bulletin 129"
+
+# ------------------------------------------------ trade study settings
+[trades]
+# Thrust levels for the power vs transfer time table (MDN §6.3; Step 4 extends this)
+thrust_levels_n = [1.05, 1.5, 2.0, 3.0]
+# (round trips, within years) targets for the inverse "power needed" question
+trip_targets = [[10, 15.0], [8, 10.0]]
+# One-at-a-time sensitivity ranges
+cargo_outbound_kg = [3000.0, 4000.0, 5000.0, 6000.0, 7000.0, 8500.0]
+dv_per_leg_base_m_s = [2400.0, 2750.0, 3100.0]
