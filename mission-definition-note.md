@@ -11,7 +11,7 @@
 ## 1. Executive Summary & Mission Statement
 
 ### 1.1 Mission Statement
-> **"Deploy an autonomous, reusable and refuellable Solar Electric Propulsion (SEP) space tug within a European 'Hub-and-Spoke' logistics architecture to transport 5,000 kg of cargo per trip from a GTO-class Earth staging orbit to a Near Rectilinear Halo Orbit (NRHO) around the Moon, repeatedly over a 15-year life, supporting sustained lunar exploration while contributing to European strategic autonomy."**
+> **"Develop an autonomous, reusable and refuellable Solar Electric Propulsion (SEP) space tug within a European 'Hub-and-Spoke' logistics architecture to transport 5,000 kg of cargo per trip from a GTO-class Earth staging orbit to a Near Rectilinear Halo Orbit (NRHO) around the Moon, repeatedly over a 15-year life, supporting sustained lunar exploration while contributing to European strategic autonomy."**
 
 ### 1.2 Core Mission Parameters
 * **Primary Role:** Cislunar cargo freight carrier between an Earth staging orbit and lunar orbit, refuelled in Earth orbit between trips.
