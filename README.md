@@ -27,8 +27,9 @@ A 5,000 kg cargo is launched by Ariane 6 to GTO, picked up by the tug, carried b
 |---|---|---|
 | `mission-definition-note.md` | Mission definition note (TUG-MDN-001, Issue 2): objectives, stakeholders, constraints, flight mechanics, ConOps, preliminary system requirements, assumption log (A-01..A-18), decision log (D-01..D-10), references | Done (self-reviewed) |
 | `docs/step2-operational-analysis.md` | Operational analysis in Capella: 7 entities, 5 capabilities, 20 activities, 19 interactions, one round-trip scenario, build guide | In progress |
+| `model/` | Python calculation model: every number in the note reproduced from one parameter file, with a calculation log (formula, inputs, source, check against the note) and 35 tests. Base for the Step 4 trades | Done (v0.1) |
 | `capella/` | Capella 7.0 model and SVG/PDF diagram exports | Planned |
-| `trade-offs/` | Power vs transfer-time model (Python) and refuelling concept scoring | Planned |
+| `trade-offs/` | Power vs transfer-time trade (extends `model/`) and refuelling concept scoring | Planned |
 | `report/` | About 10-page study report and 5-slide summary deck | Planned |
 
 ## Key results so far
@@ -39,14 +40,15 @@ A 5,000 kg cargo is launched by Ariane 6 to GTO, picked up by the tug, carried b
 - **Throughput vs power:** 18 kW gives about 7 trips in 15 years; about 25 kW gives 10 trips; about 30 kW gives 8 trips in 10 years.
 - **Open decision:** whether to keep return cargo (MO-2). Cutting it would simplify the study.
 
-All figures are documented with sources or labelled as own estimates in the assumption log.
+All figures are documented with sources or labelled as own estimates in the assumption log, and each is reproduced in `model/results/baseline/calculation_log.md`.
 
 ## Method and ground rules
 
 - **Public information only:** ESA Strategy 2040, Explore2040, Technology Vision 2040, and published papers and news. No proprietary or employer data.
 - **Every assumption is stated** and numbered in the note's appendix; every design choice has a decision-log entry with rationale.
 - **Self-review is documented:** the note includes a review section listing the weaknesses found and how they were fixed.
-- **Tooling:** Capella 7.0 (Arcadia method), Python for the trade model.
+- **Every number is reproducible:** `cd model && pip install -e ".[plot]" && cislunar-tug run --plots`.
+- **Tooling:** Capella 7.0 (Arcadia method), Python 3.11 for the calculation and trade model.
 
 ## Roadmap
 
