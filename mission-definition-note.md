@@ -319,7 +319,7 @@ This Mission Definition Note establishes the referenced foundation for the cislu
 | D-06 | Operational analysis is solution-neutral (Cislunar Cargo Transport stands in for the tug) | Arcadia practice | Becomes the System in Step 3 |
 | D-07 | "Be refuelled" becomes "Replenish transport propellant in orbit" | Stakeholder need, not a design choice | Depot, tanker or tank swap (Step 4) |
 | D-08 | Returning cargo extends delivery | Return is optional per trip | — |
-| D-09 | Step 4 judges the tug against a direct Ariane 64 launch to the Moon | Ariane 64 already sends ~10 t towards the Moon (Argonaut's launch mass) | Where the tug's advantage comes from |
+| D-09 | Step 4 judges the tug against a direct Ariane 64 launch to the Moon | Ariane 64 already sends ~8.5 t towards the Moon (Argonaut's launch mass) | Where the tug's advantage comes from |
 | D-10 | LLO excluded; the tug stops at NRHO | +~1.6 km/s per leg; cargo per Ariane 64 8.5 t → 6.6 t; long eclipses | Descent belongs to the lander |
 
 ## Appendix C: Revision History
