@@ -1,264 +1,178 @@
-# Mission Definition Note: Reusable Refuellable Electric Cargo Tug (Earth Orbit to Moon)
+# Mission Definition Note: Reusable, Refuellable Electric Cargo Tug (Earth Orbit to Moon)
 
-**Document Reference:** TUG-MDN-001  
-**Project Phase:** Phase 0 / Phase A Conceptual Architecture  
-**Methodology:** Model-Based Systems Engineering (MBSE) Framing Baseline  
-**Security / Proprietary Classification:** Public Domain Information Only  
+| | |
+| --- | --- |
+| **Document** | TUG-MDN-001, Issue 2 |
+| **Date** | 30 September 2026 |
+| **Phase** | Phase 0 / A-style portfolio study, step 1 of 7 |
+| **Author** | Robert |
+| **Information basis** | Public sources only; every assumption carries an ID |
 
----
-
-## 1. Executive Summary & Mission Statement
-
-### 1.1 Mission Statement
-> **"Deploy an autonomous, reusable, and refuellable high-power Solar Electric Propulsion (SEP) space tug within a European 'Hub-and-Spoke' logistics architecture to reliably and cost-effectively transport up to 4,500 kg of cargo per trip from Earth staging orbits to lunar orbit (Near Rectilinear Halo Orbit / Gateway and Low Lunar Orbit), supporting sustained international exploration while guaranteeing European non-dependence."**
-
-### 1.2 Core Mission Parameters
-* **Primary Role:** Trans-lunar cargo freight carrier, orbital logistics transfer, and in-space servicing node.
-* **Launch Vehicle:** Ariane 64 (heavy-lift European launcher, CSG Kourou).
-* **Launch Staging Orbit:** Low Earth Orbit (LEO, circular ~350–500 km, $i = 5.2^\circ$ or $28.5^\circ$) or Geostationary Transfer Orbit (GTO).
-* **Target Delivery Orbit:** Near Rectilinear Halo Orbit (NRHO, southern $L_2$ Earth-Moon halo, 9:2 orbital resonance, perilune ~3,200 km, apolune ~70,000 km, period ~6.5 days) and Low Lunar Orbit (LLO, circular ~100 km).
-* **Net Cargo Capacity:** 4,000 to 5,000 kg (nominal baseline: **4,500 kg**) of pressurized/unpressurized logistics or lunar modules per outbound leg.
-* **Reusability & Life Cycle:** Designed for a multi-trip service life of **8 to 10 years**, accomplishing **5 to 8 complete round-trip cycles** via in-orbit refuelling.
+**Summary.** A reusable, refuellable solar-electric tug collects 5 t of cargo that Ariane 64 places in a GTO-class orbit, delivers it to a near-rectilinear halo orbit (NRHO) around the Moon, brings back up to 0.5 t, and is refuelled in Earth orbit for repeated round trips over a 15-year life from the late 2030s. At the reference thrust that is about seven round trips; the power trade (step 4) decides whether more power buys more.
 
 ---
 
-## 2. Strategic Rationale & Premise: "Why a Reusable Electric Tug"
+## 1. Why a reusable electric tug
 
-The decision to architect a reusable, refuellable electric cargo tug is not a local trade-off; it is the fundamental **mission premise** mandated by European space policy and industrial strategies toward 2040. 
+ESA's 2040 strategy documents already call for this vehicle, so the concept is the premise of the study, not a trade. The trades (step 4) decide how to build it.
 
-```
-                                  ESA POLICY MANDATES
- ┌─────────────────────────────────────────┼────────────────────────────────────────┐
- │                                         │                                        │
- ▼                                         ▼                                        ▼
-ESA Strategy 2040                    Explore 2040                             Technology 2040
-• Objective 3.1 (Transport):         • Next-gen electric tugs:                • Very-High-Power EP
-  "Hub-and-Spoke" logistics,           Lower costs, fly more/larger             for large cargo missions (p.50).
-  reusable in-space tugs (p.23).       missions to Moon/Mars (p.16).          • Circular Space Economy:
-• Strategic Action 2a:               • Heritage synergy:                      "Four Rs" in orbit, modular &
-  Commercial refuelling &              Earth Return Orbiter (ERO) (p.16)        repairable architectures (p.45).
-  servicing in orbit (p.23).           and Gateway resupply (p.14).           • Deep-Space Solar Power:
-• Objective 2.2:                     • Common capabilities:                     High-efficiency arrays &
-  Non-dependence for cislunar          In-orbit refuelling & fuel               power distribution (p.59).
-  logistics & Gateway (p.20-21).       depots for dual launch (p.19).
-```
+| Premise | What ESA says | Source |
+| --- | --- | --- |
+| Tugs are part of Europe's logistics network | "Develop a scalable 'Hub-and-Spoke' network approach for space logistics through new launchers and space tugs." | Strategy 2040, Obj. 3.1, action 3c, p. 45 |
+| Electric propulsion is the route for cargo | "Very high thrust chemical, high-power electric and nuclear propulsion will enable large payload crewed or cargo deep space missions." Also: "very high-power electric propulsion to support large cargo missions" | Strategy 2040, Obj. 3.1, p. 45; Obj. 4.1, p. 55; Technology Vision 2040, p. 50 |
+| Electric tugs lower cost and raise cadence | "next-generation electric propulsion space tugs [...] will help lower the costs, leading to more frequent missions carrying ever larger payloads between Mars, the Moon and Earth." | Explore2040, p. 16 |
+| Refuelling and reuse | "high-efficiency refillable propulsion systems" are "critical for long-distance travel and creating durable spacecraft"; "rendezvous, docking and refueling [...] including fuel depots" | Strategy 2040, Obj. 2.2, p. 40; Explore2040, p. 19 |
+| Circular economy in orbit | "Develop key technological enablers for the future growth markets of in-orbit servicing, in-orbit assembly, in-orbit manufacturing and in-orbit recycling" | Strategy 2040, Obj. 1.2, p. 29 |
+| Lunar resupply and return cargo | Orion "has limited return mass capabilities"; a European vehicle to and from the Gateway, "with synergies with [...] electric tugs", would carry Gateway resupply and returned lunar samples (written before NASA paused Gateway in March 2026) | Explore2040, p. 14 |
+| Non-dependence | "European non-dependence from launch to landing" | Explore2040, p. 19 |
+| Timing | The Moon roadmap places tugs in the late 2030s to 2040s; "Incremental deployment of space transportation solutions from 2030 onwards" | Explore2040, Fig. 5, p. 14; Strategy 2040, Obj. 3.1, p. 45 |
 
-### 2.1 Alignment with ESA Strategy 2040 (In-Depth)
-* **The "Hub-and-Spoke" Logistics Network (Objective 3.1, Action 3c, p. 23):**  
-  Strategy 2040 explicitly identifies space transportation as the backbone of European sovereignty, calling for a transition from one-way expendable missions to a *"scalable 'Hub-and-Spoke' network approach for space logistics through new launchers and space tugs."* Ariane 6 acts as the high-capacity launcher to the LEO "hub," while the electric tug provides the long-range "spoke" to cislunar destinations.
-* **In-Orbit Servicing & Refuelling (Objective 3.1, Action 2a, p. 23):**  
-  Mandates the stimulation of commercial in-orbit operations, prioritizing *"innovative technologies for in-orbit data storage, processing, manufacturing, refuelling, servicing, and debris removal."* Reusability requires propellant replenishment as an operational routine.
-* **Autonomous Cislunar Mobility & Gateway Presence (Objective 2.2, p. 20–21):**  
-  Directs Europe to provide sovereign cislunar infrastructure, resupply the lunar Gateway, and establish synergies with the Argonaut lunar lander and European Service Modules (ESMs) while maintaining independent access free from non-European bottlenecks.
-* **A Circular Space Economy (Objective 4.1, Action 8, p. 29):**  
-  Commits ESA to a net-zero debris footprint by instituting the *"four Rs of in-orbit servicing (remove, reuse, refurbish, recycle)."* A reusable tug completely eliminates the reckless paradigm of expending upper stages and multi-ton propulsion modules after a single cislunar transfer.
+European heritage to build on: SMART-1 flew a Hall thruster from GTO to the Moon in 2003–04; OHB was contracted in 2021 for the xenon refuelling system of Gateway's electric propulsion (ESPRIT, now Lunar View), which ESA slowed down in June 2026 after NASA paused Gateway; the Earth Return Orbiter uses an electric propulsion tug (Explore2040, p. 16).
 
-### 2.2 Alignment with ESA Explore 2040
-* **Cost Reduction & Mission Cadence (Explore 2040, p. 16):**  
-  States unequivocally: *"For orbital and surface missions, the next-generation electric propulsion space tugs, with the potential to evolve towards nuclear propulsion, will help lower the costs, leading to more frequent missions carrying ever larger payloads between Mars, the Moon and Earth."*
-* **Synergies with European Exploration Assets (Explore 2040, p. 14, 16):**  
-  Builds directly upon European investments in the **Earth Return Orbiter (ERO)**—Europe's flagship high-power electric propulsion tug for the Mars Sample Return campaign—and creates operational links with LEO cargo return vehicles and Gateway resupply needs.
-* **Enabling Rendezvous, Docking, and Refuelling (Explore 2040, p. 19):**  
-  Highlights common capabilities across destinations, specifying that *"rendezvous, docking and refueling, especially for dual launches to increase the payload masses for Moon and Mars missions, including fuel depots"* are essential enablers of European non-dependence.
+Page numbers are the printed page numbers of each document.
 
-### 2.3 Alignment with ESA Technology Vision 2040
-* **High-Power Electric Propulsion (p. 50):** Classifies *"Very-High-Power Electric propulsion to enable large cargo missions"* as a primary strategic technology to ensure European industrial leadership.
-* **Circular Spacecraft Architecture (p. 45):** Advocates for systems *"no longer constrained by the need to fit everything on a single launch"* through modularity, standard interfaces, and in-space lifetime extension.
-* **Advanced Deep-Space Power (p. 59):** Demands next-generation multi-junction photovoltaic arrays and advanced power conditioning units (PCDUs) capable of sustained high-voltage EP operations.
+## 2. Objectives
 
-### 2.4 Existing European Heritage to Leverage
-The tug concept directly capitalizes on established and ongoing European industrial capabilities:
-1. **ESPRIT (European System Providing Refuelling, Infrastructure and Telecommunications):** Thales Alenia Space / ESA element for Gateway, establishing European leadership in pressurized xenon and chemical propellant transfer systems in microgravity.
-2. **Earth Return Orbiter (ERO):** Airbus Defence and Space prime development of a high-power (~40 kW array, ~20 kW EP) deep-space electric propulsion carrier.
-3. **Electric Propulsion Heritage:** Safran Snecma PPS-1350 / PPS-5000 Hall thrusters (SMART-1 heritage; telecom satellite all-electric orbit raising), QinetiQ T6/T5 gridded ion thrusters (BepiColombo), and Sitael HT-series.
-4. **Automated Rendezvous & Docking (RVD):** Automated Transfer Vehicle (ATV) optical GNC and docking sensors, Columbus / Bartolomeo berthing interfaces, and European active docking mechanisms (IBDM - International Berthing and Docking Mechanism).
+The study's figure of merit is cargo delivered to NRHO per year for a given cost; the step 4 power trade is judged on it.
 
----
+| ID | Objective | Traces to |
+| --- | --- | --- |
+| MO-1 | Deliver 5 t of cargo per trip from the Earth staging orbit to NRHO | Hub-and-Spoke; lunar resupply |
+| MO-2 | Return up to 0.5 t per trip from NRHO to the Earth staging orbit (samples, waste) | Explore2040 p. 14 return need |
+| MO-3 | Be refuelled in orbit and reused over a 15-year design life; the number of round trips comes from the step 4 power trade | Refillable propulsion; circular economy |
+| MO-4 | Use a European launcher and European-sourced critical technologies | Non-dependence |
+| MO-5 | Leave no debris: controlled disposal at end of life | Zero Debris |
 
-## 3. Mission Objectives & Success Criteria
+## 3. Stakeholders
 
-| ID | Objective Category | Description | Success Metric / Verification |
-| :--- | :--- | :--- | :--- |
-| **OBJ-01** | **Primary Transport** | Transport discrete cargo modules from Earth staging orbit to Lunar Gateway NRHO or Low Lunar Orbit (LLO). | Delivery of $\ge 4,500\text{ kg}$ net cargo to NRHO within specified transfer window. |
-| **OBJ-02** | **Reusability** | Return tug from lunar orbit to Earth staging orbit without cargo for subsequent operational cycles. | Successful return insertion and Earth orbit phasing; minimum 5 round trips. |
-| **OBJ-03** | **In-Orbit Refuelling** | Autonomous fluid and electrical coupling to receive propellant (Xenon) from a dedicated depot or tanker. | Replenishment of operational propellant load with $<1\%$ leakage; verified via telemetry. |
-| **OBJ-04** | **Autonomous RVD** | Perform autonomous rendezvous, proximity operations, and docking (RVD) with cargo modules and Gateway. | Compliant with ESA/NASA safe rendezvous corridor standards; zero collision incidents. |
-| **OBJ-05** | **Zero Debris Disposal** | Perform compliant end-of-life disposal at mission completion. | Controlled de-orbit into Earth ocean or targeted lunar surface disposal / heliocentric graveyard. |
-| **OBJ-06** | **Non-Dependence** | Maintain European strategic sovereignty across all critical subsystems. | 100% ITAR-free design utilizing European supply chain for propulsion, power, and avionics. |
+Five stakeholders interact with the tug in operation and become Capella operational entities in step 2, alongside the space safety authority; the rest shape requirements without an operational interface.
 
----
+| Stakeholder | Main need | Capella entity (step 2) |
+| --- | --- | --- |
+| Cargo customer (ESA programmes, international partners, commercial lunar payload providers) | Reliable, affordable delivery; standard cargo interface | Cargo Customer |
+| Launch service (Ariane 6) | Clear cargo and propellant delivery orbit and mass | Launch Service Provider |
+| Ground operations (control centre, ground stations) | Autonomous tug, low operator workload | Ground Operations |
+| Lunar orbit customer (lander or future logistics node) | Safe approach and docking; cargo hand-over | Lunar Orbit Destination |
+| Refuelling provider (depot or tanker, per step 4) | Standard refuelling interface | Propellant Supplier |
+| ESA (Exploration and Space Transportation directorates) | Strategic autonomy; low cost per kg delivered | — (sponsor) |
+| European industry (electric propulsion, solar arrays, docking) | Technology roadmap and production volume | — |
+| Space safety and licensing authorities | Debris-free operations and disposal | Space Safety Authority |
 
-## 4. Stakeholder Analysis
+## 4. Constraints
 
-```
-                              ┌───────────────────────────────────┐
-                              │       STAKEHOLDER ECOSYSTEM       │
-                              └─────────────────┬─────────────────┘
-                                                │
-         ┌──────────────────────────────┼──────────────────────────────┐
-         ▼                              ▼                              ▼
-  Institutional Clients          Industrial Ecosystem            International / Commercial
-  • ESA Exploration (HRE)        • Launch Provider:             • NASA / Artemis Gateway
-    Owner of Terrae Novae,         Arianespace / ArianeGroup      Logistics customer for
-    Gateway logistics resupply.    (Ariane 64 launcher).          NRHO cargo delivery.
-  • ESA STS (Transport):         • Spacecraft Primes:           • Commercial Cargo Owners:
-    Sponsor of Hub-and-Spoke       Airbus DS, OHB SE, Thales      Commercial payloads, lunar
-    space tug network.             Alenia Space.                  landers (Argonaut cargo).
-  • European Commission:         • Subsystem Suppliers:         • In-Orbit Service Providers:
-    EU Space Programme, Horizon    Safran / QinetiQ (Thrusters),  Future commercial propellant
-    Europe non-dependence.         TAS (Refuelling/ESPRIT).       depot / tanker operators.
-```
+Constraints are imposed from outside the study and are not traded.
 
-* **ESA Exploration Directorate (Terrae Novae):** Requires sustained, affordable logistics to maintain Europe’s seat at the lunar Gateway table and resupply surface expeditions via the Argonaut lunar lander.
-* **ESA Space Transportation (STS):** Requires a complementary in-space mobility layer that maximizes Ariane 6 market relevance and establishes the Hub-and-Spoke infrastructure.
-* **Industrial Primes (Airbus, OHB, Thales Alenia Space):** Seek to expand in-space transportation and servicing portfolios, commercializing Phase 0/A concepts (e.g., Airbus CLTV "Moon Cruiser" derivatives).
-* **International Partners (NASA / JAXA / CSA):** Depend on interoperable, standard-compliant logistics delivery (IDSS/IBDM docking interfaces) to sustain continuous Gateway operations.
+| ID | Constraint | Source |
+| --- | --- | --- |
+| C-1 | Launch on Ariane 6: Ariane 64 carries 11.5 t to GTO or 21.6 t to LEO; Ariane 62 carries 4.5 t to GTO | ArianeGroup |
+| C-2 | Critical technologies sourced in Europe | Explore2040, p. 19 |
+| C-3 | Comply with ESA's Zero Debris approach, including disposal | Strategy 2040, Obj. 1.2, p. 28–29 |
+| C-4 | Solar electric power only; nuclear electric is a later evolution | Explore2040, p. 16 |
+| C-5 | Programme decisions follow ESA ministerial councils (2025, 2028); a December 2026 ministerial meeting will reset the exploration roadmap after NASA's Gateway pause | Explore2040, p. 3; European Spaceflight, June 2026 |
+| C-6 | Study uses public information only | Study rule |
 
----
+## 5. Assumptions
 
-## 5. Mission Constraints & Baseline Assumptions
+One Ariane 64 launch per round trip can carry the cargo and the next trip's propellant with about 4 t to spare (A-10); that unused capacity is one reason step 4 compares against launching direct (D-09). The other values are baselines that later steps may revise.
 
-### 5.1 System Constraints
-1. **Launcher Fairing & Mass Envelopes:**  
-   * Launcher: Ariane 64 with standard 5.4 m fairing (usable internal diameter 4.5 m).
-   * Launch Capacity: Ariane 64 injects up to **21,600 kg into LEO** (circular ~300 km) or up to **11,500 kg into GTO**. The combined mass of tug, initial propellant load, and cargo must fit within this single-launch performance limit if co-manifested, or cargo launches independently once the tug is stationed.
-2. **Radiation Environment (Van Allen Belts):**  
-   * Low-thrust spiral departure from LEO involves prolonged residence (several months) in the proton and electron belts ($1,000\text{ km}$ to $15,000\text{ km}$).
-   * Requires rad-hard avionics ($>100\text{ krad}$ TID) and heavy coverglass shielding or thin-film radiation-resistant solar cell technology to limit array degradation to $<15\%$ over the lifetime.
-3. **Power Availability & Eclipses:**  
-   * Orbital night durations in LEO reach up to ~35 minutes per 90-minute orbit. The tug cannot operate high-power thrusters during eclipse, requiring robust secondary battery reserves (Li-ion) for platform keep-alive and heaters.
-4. **Docking & Interoperability Interfaces:**  
-   * Must comply with the International Docking System Standard (IDSS) / International Berthing and Docking Mechanism (IBDM) architecture for Gateway and cargo module compatibility.
-   * Fluid refuelling interfaces must follow emerging European standards (ESPRIT / ESA Clean Space fluid quick-disconnect couplings).
-5. **Space Debris Mitigation:**  
-   * Full compliance with ESA Zero Debris Charter: tug must possess sufficient delta-v reserves ($\ge 150\text{ m/s}$) to guarantee controlled, demisable disposal at end of mission life.
+| ID | Assumption | Value | Basis |
+| --- | --- | --- | --- |
+| A-01 | Cargo per outbound trip | 5 t (sensitivity 3–8.5 t) | Close to the 5.4 t of Rimani et al. (2020); fits A-10 |
+| A-02 | Return cargo per trip | Up to 0.5 t | Study assumption; return need in Explore2040, p. 14 |
+| A-03 | Reuse and life | 15-year design life; about 7 round trips at the reference thrust (A-17); 10 need about 25 kW | Study assumption; timing check in section 8 |
+| A-04 | Earth staging orbit (cargo pick-up and refuelling) | GTO-class orbit | SMART-1, Rimani et al. and Gateway PPE all start from GTO-class orbits; Ariane 64 GTO performance (C-1) |
+| A-05 | Lunar destination | NRHO, the orbit planned for Gateway (period about 6.6 days); low lunar orbit excluded (D-10) | Rimani et al.; McGuire et al. (2021) |
+| A-06 | Delta-v per leg | 2.4 km/s + 10% margin = 2.64 km/s; sensitivity case 3.1 km/s | Rimani et al. (GTO to NRHO); Gateway PPE (McGuire et al., 2024); margin is a study assumption |
+| A-07 | Return-leg delta-v | Equal to outbound | Study assumption |
+| A-08 | Propulsion baseline | Hall-effect thrusters on xenon, specific impulse 2,000–2,700 s | SMART-1, Rimani et al. (2,100 s), Gateway PPE (2,458–2,670 s) |
+| A-09 | Supply per round trip | One Ariane 64 to GTO carries the cargo and the next trip's propellant; how it is transferred is the step 4 refuelling trade | Study assumption |
+| A-10 | Propellant per round trip | About 2.5 t xenon (3.3 t in the 3.1 km/s case), so cargo plus propellant is about 7.5 t (8.3 t) against 11.5 t; a full launch would carry about 8.5 t of cargo | Rocket equation with A-01, A-02, A-06, specific impulse 2,100 s and Rimani et al.'s 5.9 t dry mass as a placeholder until step 4 |
+| A-11 | Schedule | Phase B1 about 2029–2030 after the 2028 ministerial; operations from about 2036–2038 | Explore2040, p. 3 and Fig. 5 |
+| A-12 | Disposal | Heliocentric disposal after a lunar flyby, or controlled lunar impact; chosen in step 3 | Zero Debris (C-3) |
+| A-13 | Cost treatment | Relative cost drivers only; no absolute costs | Public information limit (C-6) |
+| A-14 | Returned cargo from Earth staging orbit to the ground | Out of scope | Step 2; Explore2040, p. 14 points to Earth return vehicles |
+| A-15 | Propellant delivery route | Same Ariane 64 as the cargo, via the Propellant Supplier | Step 2; follows A-09 |
+| A-16 | Ground segment in the operational model | One Ground Operations entity for planning and control | Step 2; split in step 3 if needed |
+| A-17 | Reference thrust for timing | 1.05 N at 2,100 s (about 18 kW of electric propulsion), thrusting 85% of transfer time | Rimani et al. operating point, which reproduces their 364-day transfer; duty cycle from Gateway PPE (319 of 383 days thrusting) |
+| A-18 | Time at the ends of each round trip | 60 days in total for rendezvous, refuelling, cargo capture and hand-over | Study assumption |
 
-### 5.2 Baseline Mission Assumptions
-* **Electric Propulsion System:** Dual-mode Hall Effect Thrusters (HET) or Gridded Ion Thrusters (GIT) operating with high-voltage Power Processing Units (PPUs) at $I_{sp} \approx 1,800 - 3,200\text{ s}$.
-* **Power Level:** Scalable Solar Electric Propulsion bus of **30 kW to 60 kW** beginning-of-life (BOL) array power.
-* **Propellant:** High-purity Xenon (heritage standard). Krypton retained as a low-cost trade option.
-* **Operational Cycle Time:** Tug completes approximately 1 cislunar cargo cycle every **12 to 18 months**, accounting for outbound transit, orbital operations, inbound transit, and Earth-orbit refuelling/re-docking.
+## 6. Reference transfer data
 
----
+Published low-thrust transfers from GTO-class orbits to the Moon need 2.4–3.1 km/s and take about a year; this sets A-06 and the starting point for the step 4 power trade.
 
-## 6. Flight Mechanics: Delta-V Budget & Transfer Durations
+| Mission or study | From → to | Propulsion and power | Mass | Delta-v | Transfer time |
+| --- | --- | --- | --- | --- | --- |
+| [Gateway PPE + HALO](https://ntrs.nasa.gov/api/citations/20240007012/downloads/IEPC24_358_v2.pdf) (NASA, planned) | About 200 × 33,900 km, 28.5° → NRHO | 50 kW-class solar electric; about 2.3 N; 2,458–2,670 s | About 16 t average (implied: 50 MN·s impulse ÷ 3.1 km/s) | About 3.1 km/s; more than 2,000 kg xenon | [383 days, 319 of them thrusting](https://ntrs.nasa.gov/api/citations/20210019116/downloads/AAS_McGuire_LunarTransferTraj_v8.pdf) |
+| [Reusable EP space tug](https://iris.polito.it/retrieve/handle/11583/2837701/379000) (Rimani et al., 2020, with ESA ESTEC) | GTO → NRHO | Four Hall thrusters, 2,100 s (1.05 N in total at about 18 kW; the 91 kW listed for the propulsion subsystem is unexplained) | 13.6 t, of which 5.4 t cargo; 5.9 t dry | 2.4 km/s | 364 days |
+| [SMART-1](https://www.esa.int/esapub/bulletin/bulletin129/bul129e_estublier.pdf) (ESA, flown 2003–06) | GTO (622 × 35,781 km) → polar lunar orbit | One Hall thruster, up to 1.2 kW, 67 mN, 1,540 s | 370 kg | 3.7 km/s for the whole mission; 82 kg xenon | About 14 months to lunar capture (launched 27 Sep 2003, [captured 15 Nov 2004](https://www.eoportal.org/satellite-missions/smart-1)) |
+| [High-power SEP study](https://ntrs.nasa.gov/api/citations/20180000689/downloads/20180000689.pdf) (Loghry et al., 2017) | LEO (28.5°) → GEO | 20–50 kW solar electric | — | About 6 km/s | — |
 
-Because electric propulsion imparts continuous, low thrust rather than impulsive burns, trajectories follow many-revolution spirals out of Earth's gravity well into weakly bound chaotic manifolds before capture into the lunar three-body gravity environment.
+Two readings carry into later steps. A LEO start needs about 6 km/s just to reach GEO, against 2.4–3.1 km/s from GTO all the way to NRHO, which is why A-04 baselines GTO. The flown and planned transfers averaged about 0.8–2 × 10⁻⁴ m/s² of acceleration, so halving the trip time needs roughly twice the thrust, and power, per kilogram: the core of the step 4 trade.
 
-```
-                               CISLUNAR TRAJECTORY PHASES
-  [LEO Staging] ──(Low-Thrust Spiral-Out)──► [Earth Escape Boundary]
-         │                                              │
-         ▼                                              ▼
-  ΔV ≈ 6.5 - 7.0 km/s                           ΔV ≈ 0.5 - 0.8 km/s
-  Duration: ~6 - 8 months                       Duration: ~1 - 2 months
-         │                                              │
-         └──────────────────────┬───────────────────────┘
-                                ▼
-                        [NRHO Insertion]
-                                │
-               (Optional Low-Thrust Descent)
-                                ▼
-                       [Low Lunar Orbit - LLO]
-                        ΔV ≈ 0.7 - 0.9 km/s
-                        Duration: ~20 - 40 days
-```
+Check on Rimani et al.: 1.05 N of total thrust on their 13.6 t tug needs 340 days of thrusting for 2.4 km/s, consistent with the 364 days they report. Their tug therefore runs at about 18 kW of electric propulsion, and that operating point is the reference thrust A-17 uses.
 
-### 6.1 Published Literature Trajectory Data & Citations
+## 7. Decision log
 
-The baseline flight mechanics data are compiled from peer-reviewed astrodynamics studies and ESA/NASA concurrent engineering reports:
+| ID | Decision | Why | Left open |
+| --- | --- | --- | --- |
+| D-01 | Concept fixed: reusable, refuellable solar-electric tug | Called for by Strategy 2040 and Explore2040 (section 1) | How to build it (step 4) |
+| D-02 | Earth staging orbit = GTO-class | Less than half the low-thrust delta-v of a LEO start; matches Ariane 64 GTO performance and all three reference missions | LEO or higher orbits as step 4 open point, including radiation-belt dose on the arrays at each crossing |
+| D-03 | Lunar destination = NRHO | Reachable from GTO for 2.4–3.1 km/s with low thrust; designed to avoid eclipses; about 10 m/s per year to maintain; used by the reference studies | None for this study. NASA paused Gateway in March 2026, so NRHO is a staging orbit for landers or a future logistics node, not a Gateway commitment |
+| D-04 | Propulsion baseline = Hall thrusters on xenon | Flight heritage (SMART-1), Gateway PPE, ESPRIT xenon refuelling | Krypton and gridded ion as step 4 open points; thruster life for step 6 (about 2.5 t of xenon per round trip against roughly 2 t per 12 kW-class thruster) |
+| D-05 | Cargo 5 t out, 0.5 t back, repeated round trips over 15 years | Fits one Ariane 64 per round trip with margin (A-10); comparable to the reference tug | Cargo sensitivity 3–8.5 t and the number of round trips, both in step 4 |
+| D-06 | Operational analysis is solution-neutral: the tug is replaced by the entity Cislunar Cargo Transport | Arcadia practice; keeps the need independent of the design | The entity becomes the System in step 3 |
+| D-07 | "Be refuelled" becomes "Replenish transport propellant in orbit"; Propellant Supplier kept generic | Stakeholder need, not a design choice | Depot, tanker or tank swap (step 4) |
+| D-08 | Returning cargo extends delivery (OC-2 extends OC-1) | Return cargo is optional per trip (A-02) | None |
+| D-09 | Step 4 judges the tug against a direct Ariane 64 launch to the Moon | Ariane 64 already sends about 10 t towards the Moon (Argonaut's launch mass); a tug that uses one Ariane 64 to move 5 t in a year has to beat that on cost per kg | Where the tug's advantage comes from: fuller or cheaper launches to GTO, reuse, or return cargo |
+| D-10 | Low lunar orbit excluded; the tug stops at NRHO | Spiralling down to a 100 km orbit adds about 1.6 km/s per leg (own estimate), cutting cargo per Ariane 64 from 8.5 t to 6.6 t; eclipses of up to 46 min every 2-hour orbit starve solar electric propulsion; lower orbits cost far more than 10 m/s per year to maintain | Descent below NRHO belongs to the lander |
 
-1. **LEO to Lunar Gateway NRHO (Low-Thrust Spiral):**
-   * **Trajectory Profile:** Edelbaum spiral out from circular LEO ($h = 400\text{ km}$, $v_c \approx 7.67\text{ km/s}$) through the Earth gravity well to lunar transfer boundary, followed by stable manifold capture into the southern $L_2$ 9:2 NRHO.
-   * **Total $\Delta V$ Budget (Outbound with Cargo):** **$7,200\text{ to }7,800\text{ m/s}$**  
-     *(Includes ~6,700 m/s spiral-out, ~700 m/s lunar trans-insertion/capture, and 200 m/s navigation/margin).*
-   * **Transfer Duration:** **240 to 350 days (~8 to 11.5 months)** at power-to-mass ratio $P/m \approx 4 - 6\text{ W/kg}$.
-   * **Citations:**  
-     * Hack, K. J., et al. (NASA GRC), *"Solar Electric Propulsion for Cislunar and Deep Space Missions"*, AIAA/SAE/ASEE Joint Propulsion Conference.
-     * McGuire, M. L., et al., *"Low-Thrust Lunar Freight Mission Design"*, NASA Glenn Research Center.
-     * Whitley, R., et al., *"Earth-Moon Near Rectilinear Halo and Distant Retrograde Orbits for Lunar Exploration"*, AAS/AIAA Space Flight Mechanics Meeting.
+## 8. Review, 30 September 2026
 
-2. **NRHO to LEO (Return Spiral - Tug Only / No Cargo):**
-   * **Trajectory Profile:** NRHO departure via unstable manifold, Earth spiral-in back to circular LEO staging orbit.
-   * **Total $\Delta V$ Budget (Inbound Tug Dry):** **$6,800\text{ to }7,200\text{ m/s}$**.
-   * **Transfer Duration:** **150 to 220 days (~5 to 7.5 months)**. Due to the absence of the 4,500 kg payload, the tug's higher acceleration significantly shortens the return phase.
-   * **Citation:** Merrill, C., et al., *"Trajectory Design for the Power and Propulsion Element (PPE) and Co-Manifested Vehicle (CMV)"*, AIAA SciTech Forum.
+Issue 1 over-committed in four places: ten round trips did not fit the 15-year life, low lunar orbit was offered as an equal alternative, Gateway was treated as live, and the baseline was never compared with launching direct. The fixes are in the sections above and in D-09 and D-10.
 
-3. **High Staging Alternative (GTO to NRHO):**
-   * **Trajectory Profile:** Ariane 64 injects tug + cargo directly into Geosynchronous Transfer Orbit ($250 \times 35,786\text{ km}$). Tug raises perigee and spirals out.
-   * **Total $\Delta V$ Budget:** **$2,800\text{ to }3,400\text{ m/s}$**.
-   * **Transfer Duration:** **120 to 180 days (~4 to 6 months)**.
-   * **Benefit:** Slashes transfer time by >50% and dramatically reduces radiation exposure in the dense inner Van Allen belt, though launcher payload mass is lower than in LEO.
-   * **Citations:**  
-     * Racca, G. D., Schoenmaekers, J., et al., *"SMART-1: Electric Propulsion for a Lunar Science Mission"*, Acta Astronautica / ESA Bulletin.
-     * Airbus Defence and Space, *"Moon Cruiser / Cis-Lunar Transfer Vehicle (CLTV) Architecture Study"*, ESA GNC / CDF Reports.
+| # | Finding | Fix |
+| --- | --- | --- |
+| R1 | At the reference thrust a round trip takes about 2 years, so 15 years allows about 7 trips, not 10 | MO-3 and A-03 no longer fix the count; A-17 and A-18 state the timing basis; step 4 sets the count through the power trade |
+| R2 | Low lunar orbit was listed as an open alternative, as if it cost the same as NRHO | Excluded (D-10): about 1.6 km/s more per leg, 6.6 t instead of 8.5 t of cargo per Ariane 64, 46-minute eclipses |
+| R3 | NASA paused Gateway on 24 March 2026; in June ESA slowed its refuelling module (formerly ESPRIT, now Lunar View) | NRHO kept as an orbit, not a customer (D-03); heritage line and C-5 updated |
+| R4 | No comparison with launching cargo directly: Ariane 64 already sends about 10 t towards the Moon | Direct Ariane 64 launch becomes the step 4 reference (D-09) |
+| R5 | Rimani et al.'s power figures were called irreconcilable | Resolved: 1.05 N in total at about 18 kW reproduces their transfer (section 6) |
+| R6 | About 2.5 t of xenon per round trip, 17 t over 7 trips, against roughly 2 t per 12 kW-class thruster | Thruster life flagged for step 6 (D-04) |
+| R7 | The stakeholder table still used step 1's actor names | Aligned with the step 2 entities |
 
-4. **NRHO to Low Lunar Orbit (LLO, 100 km circular):**
-   * **Total $\Delta V$ Budget:** **$700\text{ to }900\text{ m/s}$** low-thrust transfer.
-   * **Transfer Duration:** **25 to 45 days**.
-   * **Citation:** ESA Concurrent Design Facility (CDF), *"Lunar Space Tug (LST) Assessment Study"*.
+**Round-trip time against thrust.** Outbound carries 5 t of cargo, return carries 0.5 t; each includes an 85% thrusting duty cycle, and every round trip adds 60 days at the two ends (A-17, A-18).
 
-### 6.2 Consolidated Trajectory Reference Table
+| Thrust (N) | Electric propulsion power (kW) | Outbound (days) | Return (days) | Round trip (years) | Round trips in 15 years |
+| --- | --- | --- | --- | --- | --- |
+| 1.05 (reference) | About 18 | 430 | 234 | 2.0 | 7 |
+| 1.5 | About 26 | 301 | 164 | 1.4 | 10 |
+| 2.0 | About 34 | 226 | 123 | 1.1 | 13 |
+| 3.0 | About 51 | 151 | 82 | 0.8 | 18 |
 
-| Trajectory Phase | Initial State | Target State | Impulsive $\Delta V$ (Chemical Ref) | Low-Thrust $\Delta V$ (EP Tug) | Low-Thrust Duration (30–50 kW class) | Primary Published Source |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **LEO $\to$ NRHO (Outbound)** | LEO (400 km) | Gateway NRHO | $3,950\text{ m/s}$ (5 days) | **$7,400\pm 300\text{ m/s}$** | **240–320 days** | McGuire et al. (NASA GRC); Hack et al. |
-| **NRHO $\to$ LEO (Inbound Return)** | Gateway NRHO | LEO (400 km) | $3,900\text{ m/s}$ (5 days) | **$7,000\pm 250\text{ m/s}$** | **150–210 days** (dry tug) | Merrill et al. (AIAA SciTech) |
-| **GTO $\to$ NRHO (High Staging)** | GTO | Gateway NRHO | $1,800\text{ m/s}$ (5 days) | **$3,100\pm 300\text{ m/s}$** | **120–170 days** | SMART-1 / Racca et al.; Airbus CLTV |
-| **NRHO $\to$ LLO (Delivery Branch)** | Gateway NRHO | LLO (100 km) | $730\text{ m/s}$ (12 hrs) | **$820\pm 60\text{ m/s}$** | **25–40 days** | ESA CDF Lunar Tug Study |
+Ten round trips in 15 years need about 25 kW; eight in 10 years need about 30 kW. Power assumes 2,100 s and 60% thruster efficiency (study assumption); step 4 adds the array and dry-mass growth that comes with more power, which these figures leave out.
 
----
+## Sources
 
-## 7. Concept of Operations (ConOps) Lifecycle Overview
+- ESA, *ESA Strategy 2040* (in-depth version)
+- ESA, *Explore2040: The European Exploration Strategy*, 2024
+- ESA, *Technology Vision 2040*
+- J. Rimani, C.A. Paissoni, N. Viola, G. Saccoccia, J. Gonzalez del Amo, [Multidisciplinary mission and system design tool for a reusable electric propulsion space tug](https://iris.polito.it/retrieve/handle/11583/2837701/379000), Acta Astronautica 175 (2020) 387–395
+- M. McGuire et al., [Application of Solar Electric Propulsion to the Low Thrust Lunar Transit of the Gateway Power and Propulsion Element](https://ntrs.nasa.gov/api/citations/20240007012/downloads/IEPC24_358_v2.pdf), IEPC 2024
+- M. McGuire et al., [Overview of the Lunar Transfer Trajectory of the Co-Manifested First Elements of NASA's Gateway](https://ntrs.nasa.gov/api/citations/20210019116/downloads/AAS_McGuire_LunarTransferTraj_v8.pdf), AAS 21-697, 2021
+- D. Estublier et al., [Electric Propulsion on SMART-1: A Technology Milestone](https://www.esa.int/esapub/bulletin/bulletin129/bul129e_estublier.pdf), ESA Bulletin 129
+- eoPortal, [SMART-1 mission page](https://www.eoportal.org/satellite-missions/smart-1)
+- C. Loghry et al., [LEO to GEO (and Beyond) Transfers using High Power Solar Electric Propulsion](https://ntrs.nasa.gov/api/citations/20180000689/downloads/20180000689.pdf), IEPC 2017
+- ArianeGroup, [Number crunching: Ariane 62 and Ariane 64](https://www.ariane.group/en/news/number-crunching-ariane-6-ariane-62-and-ariane-64/)
+- OHB, [OHB and Thales Alenia Space sign contract for refuelling system for Lunar Gateway](https://www.ohb.de/en/news/2021/ohb-and-thales-alenia-space-sign-contract-for-refuelling-system-for-lunar-gateway), 2021
+- The Register, [NASA abandons Lunar Gateway plans for base on Lunar surface](https://www.theregister.com/2026/03/24/goodbye_lunar_gateway_nasa_ditches/), 24 March 2026
+- European Spaceflight, [ESA Details Next Steps for Agency's Gateway Contributions](https://europeanspaceflight.com/esa-details-next-steps-for-agencys-gateway-contributions/), 23 June 2026
+- NASA Architecture Concept Review 2022, [Why NRHO: The Artemis Orbit](https://www.lpi.usra.edu/lunar/artemis/resources/WhitePaper_2023_WhyNRHA-TheArtemisOrbit.pdf)
+- Wikipedia, [Argonaut (lunar lander)](https://en.wikipedia.org/wiki/Argonaut_(lunar_lander)) — 10 t launch mass on Ariane 64
+- R. Shastry et al., [12-kW AEPS Hall Current Thruster Qualification and Production Status](https://ntrs.nasa.gov/api/citations/20240006249/downloads/AEPS%20Status%20IEPC%202024%20v7.pdf), IEPC 2024 — 23,000 h life target; the xenon-per-thruster figure is an own estimate from it
 
-The operational cycle is structured into eight standardized phases to form the direct baseline for the Step 2 Capella Operational Analysis:
+## Revision history
 
-```
-                  ┌────────────────────────────────────────────────────────┐
-                  ▼                                                        │
-┌──────────────┐    ┌──────────────┐    ┌──────────────┐    ┌────────────┐ │
-│   Phase 1    │    │   Phase 2    │    │   Phase 3    │    │  Phase 4   │ │
-│ Launch & LEOP│───►│ Cargo Pickup │───►│ Outbound EP  │───►│ Gateway /  │ │
-│ (Ariane 64)  │    │ & Validation │    │ Spiral Transit│   │ LLO Delivery││
-└──────────────┘    └──────────────┘    └──────────────┘    └─────┬──────┘ │
-                                                                  │        │
-┌──────────────┐    ┌──────────────┐    ┌──────────────┐          │        │
-│   Phase 8    │    │   Phase 7    │    │   Phase 6    │          │        │
-│ End of Life  │◄───│ In-Orbit     │◄───│ Inbound EP   │◄─────────┘        │
-│ Safe Disposal│    │ Refuelling   │    │ Return Spiral│ (Repeats 5-8x)────┘
-└──────────────┘    └──────────────┘    └──────────────┘
-```
-
-1. **Phase 1: Launch and Early Orbit Phase (LEOP):** Initial launch of the tug (dry or partially fuelled) on Ariane 64. Solar array deployment, system health checks, electric propulsion system priming.
-2. **Phase 2: Cargo Rendezvous & Staging:** Autonomous rendezvous and soft docking with the cargo module launched by Ariane 6 into the Earth staging node. Interface clamping, power/data bridging, and mass-properties recalibration.
-3. **Phase 3: Outbound Low-Thrust Transfer:** Continuous thrust spiral-out through Van Allen belts with duty-cycle throttling during eclipse. Trajectory guidance via autonomous optical navigation and ground station tracking.
-4. **Phase 4: Cislunar Proximity & Delivery:** Approach along Gateway rendezvous corridor. Relative navigation handover (LiDAR/optical). Docking at Gateway cargo port or handoff to lunar lander. Cargo unberthing and verification.
-5. **Phase 5: Lunar Staging / Servicing (Optional):** Potential propellant top-off at Gateway (via ESPRIT interface) or deployment of secondary smallsat payloads.
-6. **Phase 6: Inbound Low-Thrust Transfer:** Departure burn from NRHO back to Earth staging orbit. Rapid descent due to high thrust-to-weight ratio in dry configuration.
-7. **Phase 7: Earth Staging & Refuelling:** Rendezvous and docking with an orbital propellant depot or dedicated refuelling tanker launched by Ariane 6. High-pressure xenon transfer and system inspection. Loop back to Phase 2 for next cargo trip.
-8. **Phase 8: End-of-Life Disposal:** After 5–8 operational cycles, perform controlled disposal burn into high graveyard orbit or targeted destructive re-entry complying with ESA Zero Debris standards.
-
----
-
-## 8. Requirements Flow-Down & Traceability Baseline
-
-To seed the subsequent Capella Operational and System Analysis (Steps 2 and 3), the mission statement flows down into preliminary top-level system requirements:
-
-* **[SYS-REQ-001] Payload Delivery Capacity:** The system shall deliver a net cargo payload mass of at least $4,500\text{ kg}$ to a 9:2 Earth-Moon Near Rectilinear Halo Orbit (NRHO).
-* **[SYS-REQ-002] Multi-Trip Reusability:** The system shall be capable of performing a minimum of 5 complete cislunar round-trip mission cycles over a nominal design lifetime of 10 years.
-* **[SYS-REQ-003] In-Orbit Fluid Refuelling:** The system shall incorporate a standardized microgravity fluid interface capable of receiving at least $3,000\text{ kg}$ of pressurized Xenon propellant from an orbital depot or tanker.
-* **[SYS-REQ-004] Launcher Envelope Compatibility:** The launch mass and stowed geometric envelope of the tug platform shall be fully compatible with the Ariane 64 launcher and standard 5.4 m fairing.
-* **[SYS-REQ-005] Radiation Hardness:** The platform avionics and solar arrays shall maintain nominal mission functionality after accumulating a total ionizing dose (TID) representative of 5 spiral passages through the Earth radiation belts ($>100\text{ krad}$ with screening).
-* **[SYS-REQ-006] Autonomous Proximity Operations:** The system shall execute autonomous rendezvous and docking within a $500\text{ m}$ keep-out sphere of the target vehicle or Gateway station without real-time ground human-in-the-loop intervention.
-* **[SYS-REQ-007] European Sovereignty:** All mission-critical platform subsystems (electric propulsion thrusters, PPUs, solar arrays, autonomous GNC software, and docking interfaces) shall be procured from European industrial sources without ITAR restrictions.
-
----
-
-## 9. Conclusion & Bridge to Step 2 (Capella Modeling)
-
-This Mission Definition Note establishes the complete, referenced foundation for the cislunar cargo tug project. The mission premise is firmly anchored in the strategic directives of **ESA Strategy 2040**, **Explore 2040**, and **Technology 2040**, utilizing proven European industrial heritage and realistic flight mechanics from peer-reviewed literature.
-
-**Next Immediate Actions (Step 2 - Operational Analysis in Capella):**
-1. Initialize the operational architecture model with the identified stakeholders and operational entities: Cargo Customer, Ariane 6, Ground Segment, Gateway/Lunar Customer, and Refuelling Depot.
-2. Formulate operational capabilities: *Deliver Cislunar Cargo*, *Perform In-Orbit Refuelling*, and *Perform Compliant End-of-Life Disposal*.
-3. Model the complete round-trip Operational Scenario and export operational architecture diagrams.
+| Issue | Date | Change |
+| --- | --- | --- |
+| 1 | 29 Sep 2026 | First release |
+| 2 | 30 Sep 2026 | Self-review (section 8): round-trip count made an output of step 4; low lunar orbit excluded; Gateway pause reflected; direct-launch baseline added; unverifiable citations and trajectory figures removed |
