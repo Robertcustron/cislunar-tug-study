@@ -1,0 +1,7 @@
+weight_set,R1,R2,R3,R4,first
+baseline,2.9,2.8,2.6,2.75,R1
+equal,2.857,2.857,2.857,3.0,R4
+maturity_first,3.15,2.9,2.6,2.65,R1
+cost_first,2.95,2.9,2.6,2.45,R1
+life_first,2.4,2.3,2.3,3.25,R4
+sustainability_first,2.75,2.65,3.15,2.7,R3

@@ -1,0 +1,6 @@
+unit_class,strings_installed,rated_life_kh,hours_per_unit_per_trip_kh,set_lasts_trips,module_exchanges,strings_over_life,lifetimes_needed,module_mass_kg
+5 kW European class,6,15.0,8.3,1,8,54,29.9,380
+5 kW European class,6,20.0,8.3,2,4,30,22.4,380
+5 kW European class,6,50.0,8.3,6,1,12,9.0,380
+5 kW European class,6,75.0,8.3,9,0,6,6.0,380
+12 kW class (24 kW option),3,23.0,6.9,3,2,9,8.1,

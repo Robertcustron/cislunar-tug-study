@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+.venv/
+
+# Model runs: only the committed reference run is kept
+model/results/*
+!model/results/baseline/
+
+# LaTeX build files
+*.aux
+*.fdb_latexmk
+*.fls
+*.log
+*.out
+*.toc
+*.synctex.gz
+
+# Capella backups and workspace files
+*.old
+*.lock
+.metadata/

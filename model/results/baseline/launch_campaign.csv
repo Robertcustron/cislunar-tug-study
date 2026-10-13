@@ -1,0 +1,4 @@
+cargo_per_trip_t,trips_in_life,round_trip_years,cargo_over_life_t,resupply_launch_payload_t,spare_capacity_t,tug_launches,tug_cargo_per_launch_t,direct_cargo_per_launch_t,direct_launches_same_cargo,extra_launches_with_tug
+5.0,9,1.501,45.0,8.04,3.46,10,4.5,7.11,7,3
+6.5,9,1.609,58.5,9.74,1.76,10,5.85,7.11,9,1
+7.0,9,1.645,63.0,10.31,1.19,10,6.3,7.11,9,1

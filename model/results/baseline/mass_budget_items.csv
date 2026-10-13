@@ -1,0 +1,28 @@
+lc,item,nominal_kg,category,margin_pct,with_margin_kg,basis
+LC-1,"Hall thrusters, 6 x 15 kg",90.0,C,10,99.0,"Scaled from AEPS (< 47 kg for 12.5 kW, L3Harris data sheet), about 3.8 kg/kW; PPS 5000 mass not public"
+LC-1,"Power processing units, 6 x 20 kg",120.0,C,10,132.0,"AEPS PPU < 50 kg for 12.5 kW (L3Harris data sheet), about 4 kg/kW"
+LC-1,"Thruster pointing mechanisms, 6 x 8 kg",48.0,C,10,52.8,Own estimate
+LC-1,"Xenon tanks, 3 x L-XTA",312.0,AB,5,327.6,"ESA ARTES L-XTA: 1,548 kg Xe per 900 l tank, < 104 kg empty; 3 tanks hold 4,644 kg, above the 3,400 kg of SR-08"
+LC-1,"Xenon feed system (regulation, flow control, valves, lines)",60.0,C,10,66.0,Own estimate
+LC-1,Proximity RCS allowance (dry),60.0,D,20,72.0,Gap found in this phase: Hall thrusters cannot translate the tug for close approach; type TBD (D-31)
+LC-1,Propulsion module structure and exchange interface,80.0,D,20,96.0,Own estimate; needed for the module-exchange life strategy (D-29)
+LC-2,"Solar array wings, 29.1 kW EOL",485.0,D,20,582.0,"60 W/kg at end of life, state of the art for large GEO arrays (Mercer, NASA GRC, 2014); new size class for Europe"
+LC-2,"Array drive mechanisms, 2 x 25 kg",50.0,C,10,55.0,Own estimate
+LC-2,"Power control and distribution unit, 100 V",150.0,C,10,165.0,"Own estimate, Alphabus 100 V heritage scaled to about 31 kW"
+LC-2,"Li-ion battery, 8.8 kWh",73.0,AB,5,76.7,"Own estimate, 120 Wh/kg at battery level"
+LC-2,Harness (whole tug),200.0,D,20,240.0,Own estimate
+LC-3,"Star trackers, IMU, sun sensors",25.0,AB,5,26.2,Own estimate
+LC-3,"Reaction wheels, 4 x 12 kg",48.0,AB,5,50.4,Own estimate
+LC-3,"Rendezvous sensors (lidar, cameras)",25.0,C,10,27.5,Own estimate
+LC-3,GNC electronics,15.0,AB,5,15.8,Own estimate
+LC-4,Androgynous docking mechanism (IBDM class),325.0,C,10,357.5,"IBDM < 325 kg; CDR 2015, flight model ordered for Dream Chaser (Wikipedia, ESA)"
+LC-4,Xenon coupling and lines,30.0,C,10,33.0,"Own estimate, ESPRIT refuelling heritage"
+LC-4,Cargo latches and adapter,40.0,D,20,48.0,Own estimate
+LC-5,"On-board computers, mass memory, remote interface units",50.0,AB,5,52.5,Own estimate
+LC-6,"X-band transponders, amplifiers, steerable antenna, S-band proximity link",55.0,C,10,60.5,Own estimate
+LC-7,"Radiators, about 11 m2",55.0,C,10,60.5,"Own estimate: 3.25 kW (CALC-38) at about 300 W/m2, 5 kg/m2"
+LC-7,Pumped loop for the PPU heat,40.0,D,20,48.0,Own estimate
+LC-7,"Heaters, insulation, sensors",60.0,AB,5,63.0,Own estimate
+LC-8,Primary structure,800.0,D,20,960.0,"Own estimate, about 9 % of the 8.6 t tug launch mass; the largest uncertainty in this budget"
+LC-8,Launch adapter interface and separation,60.0,AB,5,63.0,Own estimate
+LC-8,Deployment mechanisms,40.0,C,10,44.0,Own estimate

@@ -1,0 +1,27 @@
+requirement,logical_components,via
+SR-01,"PROP, PWR, GNC, DRI, CDH, COMMS","SF-01, SF-03 (parent), SF-04"
+SR-02,DRI,"SF-05, SF-06"
+SR-03,PROP,SF-03.1
+SR-04,"PROP, PWR, GNC, CDH, COMMS",SF-03 (parent)
+SR-05,"PROP, PWR, GNC, DRI, CDH, COMMS, TCS, STR",whole system
+SR-06,STR,LF-08 Carry loads and interface with the launcher (D-28)
+SR-07,PROP,SF-03.1
+SR-08,PROP,SF-03.2
+SR-09,DRI,SF-02
+SR-10,PROP,SF-03.1
+SR-11,"PROP, PWR","SF-03.5, SF-03.6; PPU input defined as the interface (D-22, IR-01)"
+SR-12,"PWR, TCS",SF-03.6; TCS heaters in eclipse
+SR-13,"PROP, PWR, GNC, DRI, CDH, COMMS, TCS, STR",whole system
+SR-14,"GNC, DRI","SF-01, SF-03.10"
+SR-15,"GNC, DRI","SF-03.10, SF-04"
+SR-16,DRI,"SF-01, SF-02, SF-04, SF-05"
+SR-17,DRI,"SF-04, SF-06"
+SR-18,"CDH, COMMS","SF-03.7 (LF-01, LF-02), SF-03.8 (LF-03, LF-04)"
+SR-19,GNC,SF-03.3
+SR-20,"PWR, CDH, TCS","SF-03.9; Safe mode must be power-positive (PWR) and thermally safe (TCS heaters, power_budget.toml)"
+SR-21,"GNC, CDH, COMMS","SF-03.4, SF-03.7 (LF-01, LF-02)"
+SR-22,"PROP, CDH","SF-07.1, SF-03.2"
+SR-23,"PROP, PWR, CDH","SF-07.1, SF-07.2 (LF-05, LF-06)"
+SR-24,"PROP, PWR, GNC, DRI","European sourcing of EP, power processing, arrays, GNC software, docking and refuelling interfaces"
+SR-25,"GNC, DRI","SF-01, SF-02, SF-03.10"
+SR-26,DRI,SF-02

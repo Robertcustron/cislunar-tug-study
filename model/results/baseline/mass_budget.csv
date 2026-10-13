@@ -1,0 +1,11 @@
+lc,nominal_kg,maturity_margin_kg,with_margin_kg,share_pct
+LC-1,770,75,845,21.8
+LC-2,958,161,1119,28.9
+LC-3,113,7,120,3.1
+LC-4,395,44,438,11.3
+LC-5,50,2,52,1.4
+LC-6,55,6,60,1.6
+LC-7,155,16,172,4.4
+LC-8,900,167,1067,27.5
+Total,3396,478,3874,100.0
+Total with 20% system margin,,,4649,

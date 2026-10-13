@@ -1,0 +1,4 @@
+dv_per_leg_base_m_s,power_kw,dry_mass_t,propellant_per_trip_t,launch_mass_per_trip_t,outbound_days,return_days,round_trip_years,trips_in_life,cargo_over_life_t,cargo_per_year_t
+2400.0,18.02,5.9,2.486,7.486,430.1,233.8,1.982,7,35.0,2.333
+2750.0,18.02,5.9,2.897,7.897,503.4,270.4,2.283,6,30.0,2.0
+3100.0,18.02,5.9,3.323,8.323,579.6,307.8,2.594,5,25.0,1.667

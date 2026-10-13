@@ -1,0 +1,5 @@
+thrust_n,power_kw,dry_mass_t,propellant_per_trip_t,launch_mass_per_trip_t,outbound_days,return_days,round_trip_years,trips_in_life,cargo_over_life_t,cargo_per_year_t
+1.05,18.02,5.9,2.486,7.486,430.1,233.8,1.982,7,35.0,2.333
+1.5,25.74,5.9,2.486,7.486,301.1,163.6,1.437,10,50.0,3.333
+2.0,34.32,5.9,2.486,7.486,225.8,122.7,1.119,13,65.0,4.333
+3.0,51.48,5.9,2.486,7.486,150.5,81.8,0.8,18,90.0,6.0

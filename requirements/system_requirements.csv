@@ -1,0 +1,27 @@
+id,group,requirement,traces_to,allocated_functions,verification,changed_in
+SR-01,Mission and performance,"The system shall transport at least 5,000 kg of cargo per round trip from a GTO-class staging orbit to the Earth–Moon NRHO.","MO-1, A-01, A-04, A-05","SF-01, SF-03, SF-04",A,
+SR-02,Mission and performance,The system shall return up to 500 kg of cargo per round trip from NRHO to the staging orbit.,"MO-2, A-02, D-13 (optional)","SF-05, SF-06",A,
+SR-03,Mission and performance,The system shall provide a velocity change of at least 2.64 km/s per leg at the maximum outbound mass (13.4 t).,"A-06, CALC-02, CALC-08",SF-03.1,A,
+SR-04,Mission and performance,"The system shall complete a round trip, including 60 days of end operations, in no more than 1.66 years.","A-18, CALC-11, D-16",SF-03,A,Trade-offs
+SR-05,Mission and performance,The system shall have a design life of 15 years and perform at least 9 round trips.,"MO-3, A-03, D-16",all,A,Trade-offs
+SR-06,Mission and performance,"The system shall be compatible with an Ariane 64 launch to a GTO-class orbit, with a launch mass not exceeding 11,500 kg.","MO-4, C-1",—,R,
+SR-07,Propulsion and refuelling,"The system shall provide a total thrust of at least 1.46 N at a specific impulse of at least 2,100 s.","A-17, D-16, power_trade.csv",SF-03.1,T,Trade-offs
+SR-08,Propulsion and refuelling,"The system shall store at least 3,400 kg of usable xenon.","D-16, 3.1 km/s case at 25 kW (3.39 t, trade-offs sensitivity table)",SF-03.2,"A, T",Trade-offs
+SR-09,Propulsion and refuelling,"The system shall accept in-orbit replenishment of at least 2,550 kg of xenon per round trip.","MO-3, A-10, D-16, D-17",SF-02,T,Trade-offs
+SR-10,Propulsion and refuelling,The system shall process at least 22.8 t of xenon over its design life.,"D-16, power_trade.csv (life_xenon_t)",SF-03.1,A,Trade-offs
+SR-11,Power and environment,"The system shall supply at least 25 kW to the electric propulsion at end of life, in addition to platform loads.","D-16, A-19, A-21","SF-03.5, SF-03.6",A,Trade-offs
+SR-12,Power and environment,The system shall keep all platform functions powered through eclipses of up to 2.5 h; longer eclipses are excluded by trajectory design.,"Mission note §5.1, A-17, A-28, CALC-29, D-26",SF-03.6,A,Logical architecture
+SR-13,Power and environment,The system shall meet its end-of-life performance after the total ionising dose of its life (dose TBD).,"SYS-REQ-006, D-02",all,A,
+SR-14,Proximity operations and interfaces,The system shall autonomously rendezvous with and capture a cargo in the staging orbit.,"MO-1, INT-06, SYS-REQ-007","SF-01, SF-03.10",T,
+SR-15,Proximity operations and interfaces,The system shall approach and dock with the lunar orbit destination only after receiving approach clearance.,"INT-11, INT-12","SF-03.10, SF-04",T,
+SR-16,Proximity operations and interfaces,"The system shall provide one standard docking interface for cargo, destination and propellant supplier (standard TBD, IBDM-compatible TBC).","Tech Vision p.45, mission note §2.4","SF-01, SF-02, SF-04, SF-05",R,
+SR-17,Proximity operations and interfaces,The system shall release cargo with a separation velocity of no more than TBD.,"INT-13, INT-15","SF-04, SF-06",T,
+SR-18,"Command, control and autonomy","The system shall receive telecommands and transmit telemetry at all ranges up to 450,000 km.","INT-09, INT-10, A-22","SF-03.7, SF-03.8",T,
+SR-19,"Command, control and autonomy",The system shall determine its orbit and attitude autonomously during transfer (accuracy TBD).,ACT-07,SF-03.3,A,
+SR-20,"Command, control and autonomy","On detecting a failure, the system shall autonomously enter a power-positive, thermally safe mode and remain in it for at least TBD days without ground contact.","ACT-13, ESA practice",SF-03.9,T,
+SR-21,"Command, control and autonomy",The system shall execute a collision-avoidance manoeuvre within TBD hours of a ground command.,INT-16,"SF-03.4, SF-03.7",A,
+SR-22,Disposal and programmatic,The system shall keep at all times a propellant reserve sufficient for its end-of-life disposal (delta-v TBD).,"MO-5, A-12, C-3","SF-07.1, SF-03.2",A,
+SR-23,Disposal and programmatic,"At end of life the system shall perform a heliocentric disposal via lunar flyby or a controlled lunar impact, and passivate all stored energy.","MO-5, A-12, SYS-REQ-009","SF-07.1, SF-07.2","A, R",
+SR-24,Disposal and programmatic,"The electric propulsion, power processing, solar arrays, GNC software and docking and refuelling interfaces shall be sourced from European industry.","MO-4, SYS-REQ-008",—,R,
+SR-25,Proximity operations and interfaces,The system shall capture the cargo and its propellant module as one stack in a single rendezvous per round trip.,"D-17, INT-06, INT-07","SF-01, SF-02, SF-03.10",T,Trade-offs (new)
+SR-26,Disposal and programmatic,The system shall release the empty propellant module into an orbit that meets the applicable debris rules (decay time TBD).,"D-17, MO-5, C-3",SF-02,A,Trade-offs (new)

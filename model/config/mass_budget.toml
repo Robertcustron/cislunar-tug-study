@@ -1,0 +1,234 @@
+# Dry mass budget of the logical architecture, bottom-up by logical component.
+#
+# Each line: mass [kg] (nominal, no margin), maturity category and its basis.
+# Categories follow the ESA margin philosophy for assessment studies
+# (SRE-PA/2011.097, issue 1.3): "AB" off-the-shelf 5 %, "C" minor modification
+# 10 %, "D" new or major modification 20 %. The 20 % system margin on top is in
+# baseline.toml (mass_system_margin). Values are own estimates unless the basis
+# names a public source (A-34).
+
+[meta]
+budget = "Dry mass by logical component"
+document = "TRL and cost assessment"
+unit = "kg"
+
+[categories]
+AB = 0.05
+C = 0.10
+D = 0.20
+
+[[items]]
+lc = "LC-1"
+item = "Hall thrusters, 6 x 15 kg"
+mass = 90
+category = "C"
+basis = "Scaled from AEPS (< 47 kg for 12.5 kW, L3Harris data sheet), about 3.8 kg/kW; PPS 5000 mass not public"
+string = true
+
+[[items]]
+lc = "LC-1"
+item = "Power processing units, 6 x 20 kg"
+mass = 120
+category = "C"
+basis = "AEPS PPU < 50 kg for 12.5 kW (L3Harris data sheet), about 4 kg/kW"
+string = true
+
+[[items]]
+lc = "LC-1"
+item = "Thruster pointing mechanisms, 6 x 8 kg"
+mass = 48
+category = "C"
+basis = "Own estimate"
+string = true
+
+[[items]]
+lc = "LC-1"
+item = "Xenon tanks, 3 x L-XTA"
+mass = 312
+category = "AB"
+basis = "ESA ARTES L-XTA: 1,548 kg Xe per 900 l tank, < 104 kg empty; 3 tanks hold 4,644 kg, above the 3,400 kg of SR-08"
+string = false
+
+[[items]]
+lc = "LC-1"
+item = "Xenon feed system (regulation, flow control, valves, lines)"
+mass = 60
+category = "C"
+basis = "Own estimate"
+string = false
+
+[[items]]
+lc = "LC-1"
+item = "Proximity RCS allowance (dry)"
+mass = 60
+category = "D"
+basis = "Gap found in this phase: Hall thrusters cannot translate the tug for close approach; type TBD (D-31)"
+string = false
+
+[[items]]
+lc = "LC-1"
+item = "Propulsion module structure and exchange interface"
+mass = 80
+category = "D"
+basis = "Own estimate; needed for the module-exchange life strategy (D-29)"
+string = true
+
+[[items]]
+lc = "LC-2"
+item = "Solar array wings, 29.1 kW EOL"
+mass = 485
+category = "D"
+basis = "60 W/kg at end of life, state of the art for large GEO arrays (Mercer, NASA GRC, 2014); new size class for Europe"
+string = false
+
+[[items]]
+lc = "LC-2"
+item = "Array drive mechanisms, 2 x 25 kg"
+mass = 50
+category = "C"
+basis = "Own estimate"
+string = false
+
+[[items]]
+lc = "LC-2"
+item = "Power control and distribution unit, 100 V"
+mass = 150
+category = "C"
+basis = "Own estimate, Alphabus 100 V heritage scaled to about 31 kW"
+string = false
+
+[[items]]
+lc = "LC-2"
+item = "Li-ion battery, 8.8 kWh"
+mass = 73
+category = "AB"
+basis = "Own estimate, 120 Wh/kg at battery level"
+string = false
+
+[[items]]
+lc = "LC-2"
+item = "Harness (whole tug)"
+mass = 200
+category = "D"
+basis = "Own estimate"
+string = false
+
+[[items]]
+lc = "LC-3"
+item = "Star trackers, IMU, sun sensors"
+mass = 25
+category = "AB"
+basis = "Own estimate"
+string = false
+
+[[items]]
+lc = "LC-3"
+item = "Reaction wheels, 4 x 12 kg"
+mass = 48
+category = "AB"
+basis = "Own estimate"
+string = false
+
+[[items]]
+lc = "LC-3"
+item = "Rendezvous sensors (lidar, cameras)"
+mass = 25
+category = "C"
+basis = "Own estimate"
+string = false
+
+[[items]]
+lc = "LC-3"
+item = "GNC electronics"
+mass = 15
+category = "AB"
+basis = "Own estimate"
+string = false
+
+[[items]]
+lc = "LC-4"
+item = "Androgynous docking mechanism (IBDM class)"
+mass = 325
+category = "C"
+basis = "IBDM < 325 kg; CDR 2015, flight model ordered for Dream Chaser (Wikipedia, ESA)"
+string = false
+
+[[items]]
+lc = "LC-4"
+item = "Xenon coupling and lines"
+mass = 30
+category = "C"
+basis = "Own estimate, ESPRIT refuelling heritage"
+string = false
+
+[[items]]
+lc = "LC-4"
+item = "Cargo latches and adapter"
+mass = 40
+category = "D"
+basis = "Own estimate"
+string = false
+
+[[items]]
+lc = "LC-5"
+item = "On-board computers, mass memory, remote interface units"
+mass = 50
+category = "AB"
+basis = "Own estimate"
+string = false
+
+[[items]]
+lc = "LC-6"
+item = "X-band transponders, amplifiers, steerable antenna, S-band proximity link"
+mass = 55
+category = "C"
+basis = "Own estimate"
+string = false
+
+[[items]]
+lc = "LC-7"
+item = "Radiators, about 11 m2"
+mass = 55
+category = "C"
+basis = "Own estimate: 3.25 kW (CALC-38) at about 300 W/m2, 5 kg/m2"
+string = false
+
+[[items]]
+lc = "LC-7"
+item = "Pumped loop for the PPU heat"
+mass = 40
+category = "D"
+basis = "Own estimate"
+string = false
+
+[[items]]
+lc = "LC-7"
+item = "Heaters, insulation, sensors"
+mass = 60
+category = "AB"
+basis = "Own estimate"
+string = false
+
+[[items]]
+lc = "LC-8"
+item = "Primary structure"
+mass = 800
+category = "D"
+basis = "Own estimate, about 9 % of the 8.6 t tug launch mass; the largest uncertainty in this budget"
+string = false
+
+[[items]]
+lc = "LC-8"
+item = "Launch adapter interface and separation"
+mass = 60
+category = "AB"
+basis = "Own estimate"
+string = false
+
+[[items]]
+lc = "LC-8"
+item = "Deployment mechanisms"
+mass = 40
+category = "C"
+basis = "Own estimate"
+string = false

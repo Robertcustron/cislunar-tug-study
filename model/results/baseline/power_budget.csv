@@ -1,0 +1,11 @@
+id,component,launch,commissioning,transfer,eclipse,docking,refuelling,safe,disposal
+LC-1,Electric propulsion (housekeeping only),0,150,120,100,60,300,60,120
+LC-2,Electrical power,20,60,60,60,60,60,60,60
+LC-3,"Guidance, navigation and control",0,150,150,150,260,120,120,150
+LC-4,Docking and refuelling interface,0,10,10,10,200,80,10,10
+LC-5,Command and data handling,50,80,80,80,80,80,80,80
+LC-6,Communications,15,120,50,50,150,120,120,120
+LC-7,Thermal control,0,300,250,400,300,300,350,250
+LC-8,Structure and mechanisms,0,0,0,0,0,0,0,0
+,Total (nominal),85,870,720,850,1110,1060,800,790
+,Total with 20% margin,102,1044,864,1020,1332,1272,960,948

@@ -1,0 +1,104 @@
+# Trade 2: refuelling concept (qualitative weighted scoring).
+# Scores 1 (worst) to 5 (best). Every score has a one-line rationale and,
+# where one exists, a public source. Weights are percentages and sum to 100.
+
+[meta]
+trade = "Refuelling concept"
+document = "Trade-offs"
+scale = "1 = worst, 5 = best"
+
+[criteria.C1]
+name = "Maturity of the critical interface"
+weight = 20
+how = "Score from TRL: 1 = TRL 1-2, 2 = TRL 3, 3 = TRL 4, 4 = TRL 5-6, 5 = TRL 7+"
+
+[criteria.C2]
+name = "Time added per round trip"
+weight = 10
+how = "Extra rendezvous and transfer time inside the 60-day end time (A-18)"
+
+[criteria.C3]
+name = "Mass and complexity added to the tug"
+weight = 15
+how = "Permanent hardware the tug must carry for the concept"
+
+[criteria.C4]
+name = "Recurring cost per trip"
+weight = 20
+how = "Hardware launched and thrown away every trip, or infrastructure to pay for"
+
+[criteria.C5]
+name = "Restores thruster life"
+weight = 15
+how = "Trade 1 finding (D-18): each thruster must deliver 2.6 to 5 times its rated life, even with rotation"
+
+[criteria.C6]
+name = "Debris and disposal"
+weight = 10
+how = "Objects left in the staging orbit per trip (Zero Debris, C-3)"
+
+[criteria.C7]
+name = "Fit with a future logistics network"
+weight = 10
+how = "ESA Strategy 2040 / Explore2040 hub-and-spoke logistics with refuelling"
+
+[options.R1]
+name = "Fluid transfer from a co-launched propellant module"
+short = "Fluid transfer, co-launched module"
+description = "A passive xenon module is launched stacked with each cargo; the tug captures the stack once and transfers xenon through a docking-port coupling, then releases the empty module"
+[options.R1.scores]
+C1 = [4, "Xenon transfer couplers developed and ground-tested for the Gateway ESPRIT refuelling module (TRL 5-6, not flown)"]
+C2 = [4, "Transfer may take up to about 3 weeks (ESPRIT figure), which fits inside the 60-day end time"]
+C3 = [3, "Tug keeps its own tank plus coupling and transfer thermal control"]
+C4 = [3, "A tank module with a docking target is thrown away every trip"]
+C5 = [1, "No effect on thruster wear"]
+C6 = [2, "One empty module per trip left in a GTO-class orbit, must decay or be disposed of"]
+C7 = [3, "Same coupling could later serve a depot"]
+
+[options.R2]
+name = "Tank-module swap"
+short = "Tank swap"
+description = "The tug's xenon tank is a separable module; it drops the empty one and latches a full one co-launched with the cargo; only a feed-line quick-disconnect, no bulk transfer"
+[options.R2.scores]
+C1 = [3, "On-orbit replacement of small units demonstrated (Orbital Express, 2007); a 3 t tank-module exchange is not (TRL 4)"]
+C2 = [5, "Swap takes hours, not weeks"]
+C3 = [3, "Heavy structural latch for a 3 t module, but no transfer system"]
+C4 = [3, "A full tank module with latches is thrown away every trip"]
+C5 = [1, "No effect on thruster wear"]
+C6 = [2, "One empty tank module per trip left in the staging orbit"]
+C7 = [3, "Standard swap interface could be reused by other vehicles"]
+
+[options.R3]
+name = "Propellant depot in the staging orbit"
+short = "Depot"
+description = "A long-lived depot in the staging orbit is filled by separate tanker launches; the tug docks with the depot each trip in addition to capturing the cargo"
+[options.R3.scores]
+C1 = [2, "No xenon depot exists; depot system at TRL 3 even if the coupling is mature"]
+C2 = [3, "Extra rendezvous and docking with the depot every trip"]
+C3 = [3, "Same coupling and transfer system as R1"]
+C4 = [2, "A depot to build and keep running, plus separate tanker launches"]
+C5 = [1, "No effect on thruster wear unless the depot also services thrusters"]
+C6 = [4, "No empty module per trip; the depot itself needs end-of-life disposal"]
+C7 = [5, "Closest to the hub-and-spoke network in ESA Strategy 2040"]
+
+[options.R4]
+name = "Propulsion-module swap (tank and thrusters)"
+short = "Propulsion module swap"
+description = "Like R2, but the swapped module also carries the thrusters, so every trip starts with new thrusters; needs a high-power (about 25 kW) connector mated in orbit"
+[options.R4.scores]
+C1 = [2, "Mating a 25 kW-class power connector in orbit has not been demonstrated (TRL 3)"]
+C2 = [5, "Swap takes hours"]
+C3 = [2, "Structural, high-voltage and data interface on the tug"]
+C4 = [1, "A tank and a full set of thrusters thrown away every trip"]
+C5 = [5, "Every trip starts with new thrusters: solves the Trade 1 wear problem"]
+C6 = [2, "One empty propulsion module per trip left in the staging orbit"]
+C7 = [4, "Modular servicing, in line with ESA in-orbit servicing ambitions"]
+
+# Weight sets for the sensitivity check. Each must sum to 100.
+[sensitivity]
+baseline = { C1 = 20, C2 = 10, C3 = 15, C4 = 20, C5 = 15, C6 = 10, C7 = 10 }
+equal = { C1 = 14.29, C2 = 14.29, C3 = 14.29, C4 = 14.28, C5 = 14.29, C6 = 14.28, C7 = 14.28 }
+maturity_first = { C1 = 35, C2 = 10, C3 = 10, C4 = 15, C5 = 10, C6 = 10, C7 = 10 }
+cost_first = { C1 = 15, C2 = 10, C3 = 10, C4 = 35, C5 = 10, C6 = 10, C7 = 10 }
+life_first = { C1 = 15, C2 = 5, C3 = 10, C4 = 15, C5 = 35, C6 = 10, C7 = 10 }
+sustainability_first = { C1 = 15, C2 = 5, C3 = 10, C4 = 15, C5 = 10, C6 = 25, C7 = 20 }

@@ -1,0 +1,62 @@
+# Power budget of the logical architecture: nominal load of each logical
+# component in each mode [W], excluding the electric propulsion input power
+# (design_ep_power in baseline.toml), which flows only in Transfer.
+#
+# Every value is an own estimate (A-33) with its basis written next to it, so
+# the budget can be challenged line by line. Margins (A-30) are applied in the
+# model, not here. Modes are those of the system analysis; "eclipse" is the
+# Transfer mode with the thrusters off in the Earth's shadow.
+
+[meta]
+budget = "Platform power by logical component and mode"
+document = "Logical architecture"
+unit = "W"
+modes = ["launch", "commissioning", "transfer", "eclipse", "docking", "refuelling", "safe", "disposal"]
+
+[components.PROP]
+id = "LC-1"
+name = "Electric propulsion (housekeeping only)"
+basis = "Valves, flow controllers, pressure regulation, thruster pointing mechanisms and xenon tank heaters; tank heating peaks during refuelling, when recompression must be thermally controlled (ESPRIT). EP input power is not included"
+loads = { launch = 0, commissioning = 150, transfer = 120, eclipse = 100, docking = 60, refuelling = 300, safe = 60, disposal = 120 }
+
+[components.PWR]
+id = "LC-2"
+name = "Electrical power"
+basis = "Power control and distribution unit control electronics and two array drive mechanisms; conversion losses are in distribution_efficiency"
+loads = { launch = 20, commissioning = 60, transfer = 60, eclipse = 60, docking = 60, refuelling = 60, safe = 60, disposal = 60 }
+
+[components.GNC]
+id = "LC-3"
+name = "Guidance, navigation and control"
+basis = "Two star trackers, IMU, sun sensors, GNC electronics and four large reaction wheels (about 150 W); rendezvous lidar and cameras add about 110 W in Docking"
+loads = { launch = 0, commissioning = 150, transfer = 150, eclipse = 150, docking = 260, refuelling = 120, safe = 120, disposal = 150 }
+
+[components.DRI]
+id = "LC-4"
+name = "Docking and refuelling interface"
+basis = "Monitoring and standby heaters (10 W); capture mechanism, latches and sensors in Docking (200 W); coupling valves and sensors in Refuelling (80 W)"
+loads = { launch = 0, commissioning = 10, transfer = 10, eclipse = 10, docking = 200, refuelling = 80, safe = 10, disposal = 10 }
+
+[components.CDH]
+id = "LC-5"
+name = "Command and data handling"
+basis = "Dual on-board computer (one active), mass memory, remote interface units: about 80 W when on, 50 W during launch"
+loads = { launch = 50, commissioning = 80, transfer = 80, eclipse = 80, docking = 80, refuelling = 80, safe = 80, disposal = 80 }
+
+[components.COMMS]
+id = "LC-6"
+name = "Communications"
+basis = "X-band transponder always receiving (15 W) plus about 100 W when transmitting; transmits about 30 % of the time in Transfer, continuously in Docking, Refuelling, Safe and Disposal; S-band proximity link (30 W) in Docking"
+loads = { launch = 15, commissioning = 120, transfer = 50, eclipse = 50, docking = 150, refuelling = 120, safe = 120, disposal = 120 }
+
+[components.TCS]
+id = "LC-7"
+name = "Thermal control"
+basis = "Pumped loop for the PPU heat (about 60 W) plus heaters: more in eclipse and in Safe, when the thrusters are off and the tug runs cold"
+loads = { launch = 0, commissioning = 300, transfer = 250, eclipse = 400, docking = 300, refuelling = 300, safe = 350, disposal = 250 }
+
+[components.STR]
+id = "LC-8"
+name = "Structure and mechanisms"
+basis = "Passive; deployment mechanisms fire once during commissioning and are powered through PWR and CDH"
+loads = { launch = 0, commissioning = 0, transfer = 0, eclipse = 0, docking = 0, refuelling = 0, safe = 0, disposal = 0 }
